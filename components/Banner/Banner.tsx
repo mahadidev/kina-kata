@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "../index";
 import Icons from "../../lib/Icons";
 import ParticlesBg from "./ParticlesBg";
@@ -21,7 +22,7 @@ const Banner = ({
     <>
       <div className="relative bg-[#94abff]">
         <ParticlesBg />
-        <div className="container flex items-center justify-between min-h-[700px] m-auto relative px-4 sm:px-0">
+        <div className="container flex items-center justify-between min-h-[700px] m-auto relative px-4 sm:px-0 overflow-hidden">
           <div className="w-[max-content] max-w-[700px] z-10 backdrop-blur-lg bg-white/30 p-4 rounded-lg">
             <h1 className="text-white text-6xl font-bold font-title">
               Minimal <span className="text-secondary">Menz</span> Style
@@ -35,9 +36,18 @@ const Banner = ({
               Click
             </Button>
           </div>
-          <div className="absolute right-0 bottom-0 children-block">
+          <motion.div
+            animate={{ scale: 1.1 }}
+            transition={{
+              ease: "linear",
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+            className="absolute right-0 bottom-0 children-block"
+          >
             <Image className="block" src={ShoppingModel} alt="banner image" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
