@@ -10,10 +10,10 @@ module.exports = {
         'title': ['Nunito'],
       },
       backgroundColor: {
-        primary: "#F1F1F2",
+        gray: "#F1F1F2",
         black: "#202020",
-        purple: "#94abff",
-        yellow: "#fde74c"
+        primary: "#94abff",
+        secondary: "#fde74c"
       },
       colors: {
         black: "#202020",

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const Button = ({
   children,
+  animation = true,
   onClick = () => {},
   href,
   width,
@@ -12,6 +13,7 @@ const Button = ({
   className,
 }: {
   children: any;
+  animation?: boolean;
   onClick?: any;
   href?: any;
   width?: string;
@@ -32,21 +34,21 @@ const Button = ({
 
   const btnClass = `${
     width ? "w-[" + width + "]" : "w-[max-content]"
-  } ${checkBtnType} ${
-    className ? className : ""
-  }  flex items-center rounded cursor-pointer justify-center`;
+  } ${checkBtnType} flex items-center rounded cursor-pointer justify-center`;
 
   return (
     <motion.div
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className={`${width ? "w-[" + width + "]" : "w-[max-content]"}`}
+      whileHover={animation && { scale: 1.1 }}
+      whileTap={animation && { scale: 0.9 }}
+      className={`${width ? "w-[" + width + "]" : "w-[max-content]"}  ${
+        className ? className : ""
+      } `}
     >
-      {onClick && <button className={btnClass}>{children}</button>}
+      {onClick && !href && <button className={btnClass}>{children}</button>}
 
       {href && (
-        <Link href={href} className={btnClass}>
-          {children}
+        <Link href={href}>
+          <button className={btnClass}>{children}</button>
         </Link>
       )}
     </motion.div>

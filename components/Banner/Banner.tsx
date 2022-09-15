@@ -20,10 +20,11 @@ const Banner = ({
 }) => {
   return (
     <>
-      <div className="relative bg-[#94abff]">
+      <div className="relative bg-primary">
         <ParticlesBg />
         <div className="container flex items-center justify-between min-h-[700px] m-auto relative px-4 sm:px-0 overflow-hidden">
-          <div className="w-[max-content] max-w-[700px] z-10 backdrop-blur-lg bg-white/30 p-4 rounded-lg">
+          {/*  backdrop-blur-lg bg-white/30 */}
+          <div className="w-[max-content] max-w-[700px] z-10 p-4 rounded-lg">
             <h1 className="text-white text-6xl font-bold font-title">
               Minimal <span className="text-secondary">Menz</span> Style
             </h1>
