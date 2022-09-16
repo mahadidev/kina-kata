@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icons } from "../../lib";
 import { urlFor } from "../../lib/client";
 import { Button } from "../index";
@@ -14,21 +14,43 @@ const Product = ({
   price: number;
   detail: string;
 }) => {
+  const [isCart, setIsCart] = useState(null);
+  const [isWishlist, setIsWishlist] = useState(null);
+
   const textShorter = (name: string, maxLength: number) => {
     return name && name.length > maxLength
       ? name.slice(0, maxLength).split(" ").slice(0, -1).join(" ")
       : name;
   };
 
+  const addCartHandle = () => {
+    setIsCart((result: boolean) => !result);
+  };
+  const addWishlistHandle = () => {
+    setIsWishlist((result: boolean) => !result);
+  };
+
   return (
-    <div className="w-[47%] sm:w-[240px] bg-white m-1 sm:m-2 p-1 sm:p-2 rounded-lg shadow-lg relative">
+    <div className="w-[47%] sm:w-[240px] bg-white m-1 p-1 sm:p-2 rounded-lg shadow-lg relative">
       <div className="absolute p-2 right-0 top-0">
-        <Button className="mb-2 shadow-2xl" type="secondary">
-          <span className="text-lg">{Icons.cartIcon}</span>
+        <Button
+          className="mb-2 shadow-2xl"
+          type="primary"
+          onClick={addCartHandle}
+        >
+          <span className="text-xl">
+            {isCart ? Icons.cartAddedIcon : Icons.cartAddIcon}
+          </span>
         </Button>
 
-        <Button className="shadow-2xl" type="secondary">
-          <span className="text-lg">{Icons.wishlistIcon}</span>
+        <Button
+          className="shadow-2xl"
+          type="primary"
+          onClick={addWishlistHandle}
+        >
+          <span className="text-xl">
+            {isWishlist ? Icons.wishlistIcon : Icons.wishlistAddIcon}
+          </span>
         </Button>
       </div>
       <div className="w-[100%] h-[150px] sm:h-[224px] overflow-hidden flex items-center justify-center rounded-lg cursor-pointer">
@@ -49,11 +71,7 @@ const Product = ({
       <p className="hidden sm:block mt-2 leading-none text-[#00000094] text-sm sM:text-md">
         {textShorter(detail, 47)}
       </p>
-      <Button
-        className="hidden sm:flex mt-2 py-1"
-        width="100%"
-        type="secondary"
-      >
+      <Button className="hidden sm:flex mt-2 py-1" width="100%" type="primary">
         Buy Now
       </Button>
     </div>

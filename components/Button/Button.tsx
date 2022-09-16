@@ -11,6 +11,7 @@ const Button = ({
   width,
   type,
   className,
+  circle,
 }: {
   children: any;
   animation?: boolean;
@@ -19,13 +20,16 @@ const Button = ({
   width?: string;
   type?: "primary" | "white" | "secondary" | "outline";
   className?: string;
+  circle?: boolean;
 }) => {
   const ButtonType = {
-    primary:
-      "bg-gradient-to-r from-primary to-primary/80 text-[white] px-4 py-2",
-    secondary:
-      "bg-gradient-to-r from-secondary to-secondary/80 text-black px-4 py-2",
-    white: "bg-white text-red px-4 py-2",
+    primary: `bg-gradient-to-r from-primary to-primary/80 text-[white] ${
+      circle ? "px-2" : "px-4"
+    } py-2`,
+    secondary: `bg-gradient-to-r from-secondary to-secondary/80 text-black ${
+      circle ? "px-2" : "px-4"
+    } py-2`,
+    white: `bg-white text-red ${circle ? "px-2" : "px-4"} py-2`,
     outline: "",
   };
 
@@ -34,17 +38,23 @@ const Button = ({
 
   const btnClass = `${
     width ? "w-[" + width + "]" : "w-[max-content]"
-  } ${checkBtnType} flex items-center rounded cursor-pointer justify-center`;
+  } ${checkBtnType} flex items-center ${
+    circle ? "rounded-full" : "rounded"
+  } cursor-pointer justify-center`;
 
   return (
     <motion.div
-      whileHover={animation && { scale: 1.1 }}
-      whileTap={animation && { scale: 0.9 }}
+      whileHover={animation && { scale: 1.05 }}
+      whileTap={animation && { scale: 0.95 }}
       className={`${width ? "w-[" + width + "]" : "w-[max-content]"}  ${
         className ? className : ""
-      } `}
+      }`}
     >
-      {onClick && !href && <button className={btnClass}>{children}</button>}
+      {onClick && !href && (
+        <button className={btnClass} onClick={onClick}>
+          {children}
+        </button>
+      )}
 
       {href && (
         <Link href={href}>

@@ -2,7 +2,9 @@ import React from "react";
 import { client } from "../lib/client";
 import {
   Banner,
+  PromoCard,
   Categories,
+  Products,
   BestSellingProduct,
   PromoBanner,
 } from "../components";
@@ -17,9 +19,11 @@ const HomePage = ({
   return (
     <div>
       <Banner />
+      <PromoCard />
       <Categories categories={categories} />
-      <PromoBanner />
       <BestSellingProduct products={products} />
+      <PromoBanner />
+      <Products />
     </div>
   );
 };

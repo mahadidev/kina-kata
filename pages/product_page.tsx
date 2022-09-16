@@ -7,7 +7,7 @@ function product_page(products: any) {
       {products?.products.map((product: any) => (
         <div key={product.name} style={{ marginBottom: "5rem" }}>
           {product.image?.map((image: any) => (
-            <img key={image} src={urlFor(image)} alt={"product image"} />
+            <img key={image} src={urlFor(image).url()} alt={"product image"} />
           ))}
         </div>
       ))}

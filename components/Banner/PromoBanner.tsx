@@ -1,10 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AiOutlineMobile } from "react-icons/ai";
-import { BsCpu } from "react-icons/bs";
-import { GiBattery25 } from "react-icons/gi";
-import { ImConnection } from "react-icons/im";
-import Button from "../Button/Button";
+import { Icons } from "../../lib";
+import { Button } from "../index";
 
 const PromoBanner = () => {
   return (
@@ -27,9 +24,7 @@ const PromoBanner = () => {
         </h1>
         <div className="flex flex-wrap max-w-[580px]">
           <div className="flex max-w-[280px] p-2 items-center">
-            <span className="text-6xl text-primary">
-              <AiOutlineMobile />
-            </span>
+            <span className="text-6xl text-primary">{Icons.mobileIcon}</span>
             <div className="pl-2">
               <h2 className="text-lg">DISPLAY SIZE</h2>
               <p className="text-sm">
@@ -38,18 +33,14 @@ const PromoBanner = () => {
             </div>
           </div>
           <div className="flex max-w-[280px] p-2 items-center">
-            <span className="text-6xl text-primary">
-              <BsCpu />
-            </span>
+            <span className="text-6xl text-primary">{Icons.cpuIcon}</span>
             <div className="pl-2">
               <h2 className="text-lg">CPU/GPU</h2>
               <p className="text-sm">NVIDIA customised Tegra processor</p>
             </div>
           </div>
           <div className="flex max-w-[280px] p-2 items-center">
-            <span className="text-6xl text-primary">
-              <GiBattery25 />
-            </span>
+            <span className="text-6xl text-primary">{Icons.batteryIcon}</span>
             <div className="pl-2">
               <h2 className="text-lg">NTERNAL BATTERY</h2>
               <p className="text-sm">
@@ -58,9 +49,7 @@ const PromoBanner = () => {
             </div>
           </div>
           <div className="flex max-w-[280px] p-2 items-center">
-            <span className="text-6xl text-primary">
-              <ImConnection />
-            </span>
+            <span className="text-6xl text-primary">{Icons.batteryIcon}</span>
             <div className="pl-2">
               <h2 className="text-lg">NINTENDO DOCK</h2>
               <p className="text-sm">
@@ -70,6 +59,7 @@ const PromoBanner = () => {
           </div>
           <Button className="md:absolute ml-4 md:ml-0 mt-2 md:mt-0 right-8 bottom-8">
             View Product
+            <span className="text-2xl ml-3">{Icons.arrowLongRightIcon}</span>
           </Button>
         </div>
       </div>

@@ -15,7 +15,7 @@ const Category = (category: {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-[100px] h-[100%] bg-white m-1 sm:m-2 p-1 sm:p-2 rounded-lg shadow-lg relative"
+        className="w-[100px] h-[100%] bg-white m-1 px-1 py-2 rounded-lg shadow-lg relative"
       >
         <div className="w-[50px] h-[50px] overflow-hidden m-auto flex items-center justify-center rounded-lg cursor-pointer">
           <img

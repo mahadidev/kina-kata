@@ -99,12 +99,12 @@ const Navbar = () => {
             </div>
             <div className="flex wrap mt-4 pl-6">
               <Button className="mr-2" type="secondary">
-                <span className="text-lg xl:mr-2">{Icons.loginIcon}</span>
-                <span className="hidden xl:block">Login</span>
+                <span className="text-lg mr-2">{Icons.loginIcon}</span>
+                <span className="block">Login</span>
               </Button>
               <Button type="secondary">
-                <span className="text-lg xl:mr-2">{Icons.cartIcon}</span>
-                <span className="hidden xl:block">Cart</span>
+                <span className="text-lg mr-2">{Icons.cartIcon}</span>
+                <span className="block">Cart</span>
               </Button>
             </div>
           </motion.div>
