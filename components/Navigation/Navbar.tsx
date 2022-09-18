@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import Icons from "../../lib/Icons";
+import { Icons } from "../index";
 import { motion } from "framer-motion";
 import { Button } from "../index";
 

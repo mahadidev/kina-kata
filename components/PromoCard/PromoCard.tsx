@@ -6,7 +6,7 @@ import Offer1 from "../../assets/image/offer-1.webp";
 import Offer2 from "../../assets/image/offer-2.webp";
 import Offer3 from "../../assets/image/offer-3.webp";
 import Offer4 from "../../assets/image/offer-4.webp";
-import { Icons } from "../../lib";
+import { Icons } from "../../utils";
 
 const PromoCard = () => {
   const sliderData = [Offer1, Offer2, Offer3, Offer4];

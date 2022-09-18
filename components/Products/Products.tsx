@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { client } from "../../lib/client";
+import { Client } from "../../utils";
 import { Product, Button } from "../index";
 
-const Products = (products: any) => {
+const Products = (defaultProduct: any) => {
   const [productCount, setProductCount] = useState(0);
   const [productsData, setProductsData] = useState(null);
 
@@ -11,7 +11,8 @@ const Products = (products: any) => {
     const productQuery = `*[_type == 'product'] | order(sold desc) [${countStart}...${
       countEnd + 1
     }]`;
-    const products = await client.fetch(productQuery);
+    const products = await Client.fetch(productQuery);
+
     if (products.length > 0) {
       const newProductData = products.slice(0, 2);
       // set product
@@ -37,16 +38,16 @@ const Products = (products: any) => {
   };
 
   useEffect(() => {
-    getData(0, 2);
+    setProductsData(defaultProduct.defaultProduct);
   }, []);
 
   return (
     <div className="py-8">
-      <div className="container m-auto px-3  sm:px-0">
+      <div className="container m-auto px-3 sm:px-0">
         <h1 className="text-3xl">Product.</h1>
         <div className="flex flex-wrap justify-center sm:justify-start py-4">
           {productsData?.map((product: any, i: number) => (
-            <Product key={product._id} {...product} />
+            <Product key={i} {...product} />
           ))}
         </div>
         {productCount !== null && (

@@ -1,8 +1,9 @@
-import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { client } from "../../lib/client";
 import { Product } from "../index";
 
 const BestSellingProduct = (products: any) => {
+  console.log(products.prodducts);
   return (
     <div className="py-8">
       <div className="container m-auto px-3 sm:px-0">
@@ -10,7 +11,7 @@ const BestSellingProduct = (products: any) => {
           Best <span className="text-primary">Selling Product.</span>
         </h1>
         <div className="flex flex-wrap justify-center sm:justify-start py-4">
-          {products.products?.slice(0, 6).map((product: any, i: number) => (
+          {products?.prodducts?.map((product: any, i: number) => (
             <Product key={i} {...product} />
           ))}
         </div>

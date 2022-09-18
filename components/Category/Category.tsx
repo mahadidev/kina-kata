@@ -1,5 +1,5 @@
 import React from "react";
-import { urlFor } from "../../lib/client";
+import { ImageUrl } from "../../utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -20,7 +20,7 @@ const Category = (category: {
         <div className="w-[50px] h-[50px] overflow-hidden m-auto flex items-center justify-center rounded-lg cursor-pointer">
           <img
             className="w-[100%]"
-            src={urlFor(category.image).url()}
+            src={ImageUrl(category.image).url()}
             alt={"Product Image"}
           />
         </div>

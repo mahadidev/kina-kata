@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Icons } from "../../lib";
+import { Icons } from "../../utils";
 import { Button } from "../index";
 
 const PromoBanner = () => {

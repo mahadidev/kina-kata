@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "../index";
-import Icons from "../../lib/Icons";
+import { Icons } from "../index";
 import ParticlesBg from "./ParticlesBg";
 import ShoppingModel from "../../assets/image/shopping_model.png";
 

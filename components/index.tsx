@@ -8,3 +8,4 @@ export { default as BestSellingProduct } from "./BestSellingProduct/BestSellingP
 export { default as Product } from "./Product/Product";
 export { default as Button } from "./Button/Button";
 export { default as PromoCard } from "./PromoCard/PromoCard";
+export { default as Icons } from "./Icons/Icons";

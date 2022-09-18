@@ -10,7 +10,7 @@ const Categories = (categories: any) => {
         </h1>
         <div className="flex flex-wrap justify-center py-4">
           {categories?.categories
-            .slice(0, 14)
+            ?.slice(0, 14)
             .map((category: any, i: number) => (
               <Category key={i} {...category} />
             ))}

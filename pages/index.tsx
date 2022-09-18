@@ -1,44 +1,23 @@
-import React from "react";
-import { client } from "../lib/client";
-import {
-  Banner,
-  PromoCard,
-  Categories,
-  Products,
-  BestSellingProduct,
-  PromoBanner,
-} from "../components";
+import React, { useEffect } from "react";
+import axios from "axios";
 
-const HomePage = ({
-  categories,
-  products,
-}: {
-  categories: any;
-  products: any;
-}) => {
-  return (
-    <div>
-      <Banner />
-      <PromoCard />
-      <Categories categories={categories} />
-      <BestSellingProduct products={products} />
-      <PromoBanner />
-      <Products />
-    </div>
-  );
-};
-export default HomePage;
-
-export const getServerSideProps = async () => {
-  // get gategory data
-  const categoryQuery = "*[_type == 'category']";
-  const categories = await client.fetch(categoryQuery);
-
-  // get product data
-  const productQuery = "*[_type == 'product'] | order(sold desc)";
-  const products = await client.fetch(productQuery);
-
-  return {
-    props: { categories, products },
+const index = () => {
+  const getProdcut = () => {
+    axios
+      .get(`http://localhost:3000/api/product/getProducts`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  useEffect(() => {
+    getProdcut();
+  }, []);
+
+  return <div>index</div>;
 };
+
+export default index;

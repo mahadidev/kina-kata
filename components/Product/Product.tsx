@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Icons } from "../../lib";
-import { urlFor } from "../../lib/client";
+import { Icons } from "../index";
+import { ImageUrl } from "../../utils/";
 import { Button } from "../index";
 
 const Product = ({
@@ -56,7 +56,7 @@ const Product = ({
       <div className="w-[100%] h-[150px] sm:h-[224px] overflow-hidden flex items-center justify-center rounded-lg cursor-pointer">
         <img
           className="w-[100%]"
-          src={urlFor(image[0]).url()}
+          src={ImageUrl(image[0]).url()}
           alt={"Product Image"}
         />
       </div>
