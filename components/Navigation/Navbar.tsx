@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="container m-auto flex items-center justify-between px-4 sm:px-0 py-4 sm:py-0">
         {/* Logo Start */}
         <Link href="/">
-          <h1 className="text-3xl font-semibold cursor-pointer">
+          <h1 className="text-black text-3xl font-semibold cursor-pointer">
             Kina<span className="text-secondary ml-[4px]">Kata</span>
           </h1>
         </Link>
@@ -20,22 +20,22 @@ const Navbar = () => {
         {/* Normal Menu Start */}
         <div className="hidden sm:flex">
           <Link href="/">
-            <button className="px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
+            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
               Home
             </button>
           </Link>
           <Link href="/products">
-            <button className="px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
+            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
               Products
             </button>
           </Link>
           <Link href="/about">
-            <button className="px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
+            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
               About
             </button>
           </Link>
           <Link href="/contact">
-            <button className="px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
+            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
               Contact
             </button>
           </Link>

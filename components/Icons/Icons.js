@@ -1,5 +1,5 @@
 import {AiOutlineShoppingCart, AiOutlineMobile, AiOutlineLogin, AiOutlineMenu, AiOutlineClose, AiOutlineShopping, AiOutlineHeart} from "react-icons/ai";
-import { BsCartPlus, BsCartCheck, BsCpu, BsArrowRight} from "react-icons/bs";
+import { BsCartPlus, BsCartCheck, BsCpu, BsArrowRight, BsStar, BsStarHalf, BsStarFill} from "react-icons/bs";
 import { RiHeartAddLine } from "react-icons/ri";
 import { GiBattery25 } from "react-icons/gi";
 import { ImConnection } from "react-icons/im";
@@ -22,6 +22,9 @@ const Icons = {
   arrowLongRightIcon: <BsArrowRight />,
   arrowShortLeftIcon: <IoIosArrowBack />,
   arrowShortRightIcon: <IoIosArrowForward />,
+  starOutline: <BsStar />,
+  starHalf: <BsStarHalf />,
+  starFull: <BsStarFill />
 }
 
 export default Icons;

@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { Icons } from "../index";
 import { ImageUrl } from "../../utils/";
 import { Button } from "../index";
+import { Rating } from "react-simple-star-rating";
 
 const Product = ({
   name,
   image,
+  rating,
   price,
   detail,
+  width,
 }: {
   name: string;
   image: string;
+  rating: number;
   price: number;
   detail: string;
+  width?: string;
 }) => {
   const [isCart, setIsCart] = useState(null);
   const [isWishlist, setIsWishlist] = useState(null);
+  const [imageWidth, setImageWidth] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
+  const imgRef = useRef(null);
 
   const textShorter = (name: string, maxLength: number) => {
     return name && name.length > maxLength
@@ -30,50 +39,91 @@ const Product = ({
     setIsWishlist((result: boolean) => !result);
   };
 
-  return (
-    <div className="w-[47%] sm:w-[240px] bg-white m-1 p-1 sm:p-2 rounded-lg shadow-lg relative">
-      <div className="absolute p-2 right-0 top-0">
-        <Button
-          className="mb-2 shadow-2xl"
-          type="primary"
-          onClick={addCartHandle}
-        >
-          <span className="text-xl">
-            {isCart ? Icons.cartAddedIcon : Icons.cartAddIcon}
-          </span>
-        </Button>
+  useEffect(() => {
+    setImageWidth(imgRef?.current?.offsetWidth);
+  }, []);
 
-        <Button
-          className="shadow-2xl"
-          type="primary"
-          onClick={addWishlistHandle}
+  return (
+    <div
+      className={`${
+        width
+          ? width
+          : "2xl:w-[16.1%] xl:w-[19.3%] lg:w-[24.2%] md:w-[32.2%] w-[47%]"
+      } bg-white m-1 p-1 sm:p-2 rounded-lg shadow-lg`}
+      onMouseOver={() => {
+        setShowOptions(true);
+      }}
+      onMouseLeave={() => {
+        setShowOptions(false);
+      }}
+    >
+      <div
+        className={`w-[100%] overflow-hidden flex items-center justify-center rounded-lg cursor-pointer relative`}
+        style={{ height: imageWidth + "px" }}
+      >
+        <motion.div
+          animate={{
+            transform: showOptions
+              ? "translateX(0%) scaleY(1)"
+              : "translateX(0%) scaleY(0)",
+
+            transition: {
+              duration: 0.1,
+              damping: 5,
+            },
+          }}
+          className="w-[max-content !important] absolute right-auto left-auto bottom-2 shadow-2xl bg-white rounded-lg flex"
         >
-          <span className="text-xl">
-            {isWishlist ? Icons.wishlistIcon : Icons.wishlistAddIcon}
-          </span>
-        </Button>
-      </div>
-      <div className="w-[100%] h-[150px] sm:h-[224px] overflow-hidden flex items-center justify-center rounded-lg cursor-pointer">
+          <Button
+            className={`hover:text-primary ${
+              isCart ? "text-primary" : "text-black"
+            }`}
+            type="white"
+            onClick={addCartHandle}
+          >
+            <span className="text-xl">
+              {isCart ? Icons.cartAddedIcon : Icons.cartAddIcon}
+            </span>
+          </Button>
+
+          <Button
+            className={`hover:text-primary ${
+              isWishlist ? "text-primary" : "text-black"
+            }`}
+            type="white"
+            onClick={addWishlistHandle}
+          >
+            <span className="text-xl">
+              {isWishlist ? Icons.wishlistIcon : Icons.wishlistAddIcon}
+            </span>
+          </Button>
+        </motion.div>
         <img
           className="w-[100%]"
           src={ImageUrl(image[0]).url()}
           alt={"Product Image"}
+          ref={imgRef}
         />
       </div>
-      <div className="flex justify-between items-center pt-2">
-        <h2 className="text-sm sm:text-xl cursor-pointer">
-          {textShorter(name, 22)}
-        </h2>
-        <span className="text-[#00000094] text-sm sm:text-xl cursor-pointer">
-          ${price}
-        </span>
+      <div className="pt-2 w-[100%]">
+        <Rating
+          className="text-sm"
+          initialValue={
+            rating ? Number((Math.round(rating * 2) / 2).toFixed(1)) : 0
+          }
+          ratingValue={0}
+          readonly
+          size={25}
+        />
       </div>
-      <p className="hidden sm:block mt-2 leading-none text-[#00000094] text-sm sM:text-md">
-        {textShorter(detail, 47)}
-      </p>
-      <Button className="hidden sm:flex mt-2 py-1" width="100%" type="primary">
-        Buy Now
-      </Button>
+      <div className="flex justify-between items-center pt-1">
+        <h2 className="text-sm sm:text-xl cursor-pointer text-black">
+          {textShorter(name, 30)}
+        </h2>
+      </div>
+      <span className="text-blackLight text-sm sm:text-xl cursor-pointer">
+        ${price}
+      </span>
     </div>
   );
 };

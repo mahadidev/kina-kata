@@ -1,23 +1,16 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import { BestSellingProduct, Banner, Products, PromoCard } from "../components";
 
 const index = () => {
-  const getProdcut = () => {
-    axios
-      .get(`http://localhost:3000/api/product/getProducts`)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    getProdcut();
-  }, []);
-
-  return <div>index</div>;
+  return (
+    <div className="">
+      <Banner name={"heroBanner"} />
+      <PromoCard />
+      <BestSellingProduct />
+      <Banner name={"homePromoBanner"} />
+      <Products />
+    </div>
+  );
 };
 
 export default index;

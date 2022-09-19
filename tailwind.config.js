@@ -16,7 +16,8 @@ module.exports = {
         secondary: "#fde74c"
       },
       colors: {
-        black: "#202020",
+        black: "#4c4c4c",
+        blackLight: "#878787",
         primary: "#94abff",
         secondary: "#fde74c"
       },

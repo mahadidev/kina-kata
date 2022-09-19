@@ -1,6 +1,7 @@
 const ApiSubject = {
-  productCountStart: "start",
-  productCountEnd: "end",
+  table: "table",
+  countStart: "start",
+  countEnd: "end",
   orderBy: "orderBy",
   order: "order",
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Icons } from "../../lib";
+import { Icons } from "../index";
 import { motion } from "framer-motion";
 
 const Button = ({
@@ -18,7 +18,7 @@ const Button = ({
   onClick?: any;
   href?: any;
   width?: string;
-  type?: "primary" | "white" | "secondary" | "outline";
+  type?: "primary" | "white" | "secondary" | "outline" | any;
   className?: string;
   circle?: boolean;
 }) => {
