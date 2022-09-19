@@ -17,7 +17,7 @@ const Banner = ({ name }: { name: string }) => {
       bgColor: "bg-primary",
       textColor: "text-white",
       textColor2: "text-secondary",
-      btnType: "secondary",
+      btnType: "white",
     },
     secondary: {
       bgColor: "bg-secondary",

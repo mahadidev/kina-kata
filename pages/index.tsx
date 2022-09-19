@@ -3,7 +3,7 @@ import { BestSellingProduct, Banner, Products, PromoCard } from "../components";
 
 const index = () => {
   return (
-    <div className="">
+    <div className="pt-20">
       <Banner name={"heroBanner"} />
       <PromoCard />
       <BestSellingProduct />

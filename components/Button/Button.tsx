@@ -23,10 +23,10 @@ const Button = ({
   circle?: boolean;
 }) => {
   const ButtonType = {
-    primary: `bg-gradient-to-r from-primary to-primary/80 text-[white] ${
+    primary: `bg-gradient-to-r from-primary to-primary/90 text-white ${
       circle ? "px-2" : "px-4"
     } py-2`,
-    secondary: `bg-gradient-to-r from-secondary to-secondary/80 text-black ${
+    secondary: `bg-gradient-to-r from-secondary to-secondary/90 text-white ${
       circle ? "px-2" : "px-4"
     } py-2`,
     white: `bg-white text-red ${circle ? "px-2" : "px-4"} py-2`,

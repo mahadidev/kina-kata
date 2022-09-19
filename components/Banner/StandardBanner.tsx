@@ -29,14 +29,17 @@ const StandardBanner = ({
 }) => {
   return (
     <>
-      <div className={`relative ${bgColor}`}>
+      <div
+        className={`relative bg-top bg-cover bg-no-repeat `}
+        style={{ backgroundImage: `url(${ImageUrl(image).url()})` }}
+      >
         <ParticlesBg />
-        <div className="container flex items-center justify-between min-h-[700px] m-auto relative px-4 sm:px-0 overflow-hidden">
+        <div className="container flex items-center justify-between min-h-[870px] m-auto relative px-4 sm:px-0 overflow-hidden">
           {/*  backdrop-blur-lg bg-white/30 */}
           <div className="w-[max-content] max-w-[700px] z-10 p-4 rounded-lg">
             {title && (
               <h1
-                className={`${textColor} text-6xl font-bold font-title`}
+                className={`${textColor} text-7xl font-bold font-title mb-3`}
                 dangerouslySetInnerHTML={{ __html: title }}
               />
             )}
@@ -54,7 +57,7 @@ const StandardBanner = ({
               </Button>
             )}
           </div>
-          {image && (
+          {/* {image && (
             <motion.div
               animate={{ scale: 1.1 }}
               transition={{
@@ -63,15 +66,15 @@ const StandardBanner = ({
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
-              className="absolute right-0 bottom-0 children-block"
+              className="absolute max-w-[100%] w-[800px] hidden right-0 top-0 children-block"
             >
               <img
-                className="block"
+                className="block w-[100%]"
                 src={ImageUrl(image).url()}
                 alt="banner image"
               />
-            </motion.div>
-          )}
+            </motion.div> 
+          )}*/}
         </div>
       </div>
     </>

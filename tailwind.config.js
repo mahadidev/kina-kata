@@ -11,15 +11,17 @@ module.exports = {
       },
       backgroundColor: {
         gray: "#F1F1F2",
+        white: "#fff",
         black: "#202020",
-        primary: "#94abff",
+        primary: "#5c59ff",
         secondary: "#fde74c"
       },
       colors: {
         black: "#4c4c4c",
+        white: "#fff",
         blackLight: "#878787",
-        primary: "#94abff",
-        secondary: "#fde74c"
+        primary: "#5c59ff",
+        secondary: "#3c3c3c"
       },
     },
   },

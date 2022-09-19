@@ -55,7 +55,7 @@ const PromoBanner = ({
           <div className="flex flex-wrap max-w-[580px]">
             {details?.map((item: any, i: number) => (
               <div className="flex max-w-[280px] p-2 items-center" key={i}>
-                <span className={`text-6xl ${textColor2}`}>
+                <span className={`text-6xl ${textColor}`}>
                   {Icons[item.icon]}
                 </span>
                 <div className="pl-2">

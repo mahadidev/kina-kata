@@ -11,6 +11,7 @@ const Product = ({
   rating,
   price,
   detail,
+  sold,
   width,
 }: {
   name: string;
@@ -18,6 +19,7 @@ const Product = ({
   rating: number;
   price: number;
   detail: string;
+  sold?: number;
   width?: string;
 }) => {
   const [isCart, setIsCart] = useState(null);
@@ -105,7 +107,7 @@ const Product = ({
           ref={imgRef}
         />
       </div>
-      <div className="pt-2 w-[100%]">
+      <div className="pt-2 w-[100%] flex items-center">
         <Rating
           className="text-sm"
           initialValue={
@@ -115,6 +117,7 @@ const Product = ({
           readonly
           size={25}
         />
+        <span className="pl-1">({sold})</span>
       </div>
       <div className="flex justify-between items-center pt-1">
         <h2 className="text-sm sm:text-xl cursor-pointer text-black">

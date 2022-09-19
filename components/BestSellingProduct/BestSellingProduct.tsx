@@ -14,7 +14,7 @@ const BestSellingProduct = () => {
     FetchData({
       name: "product",
       countStart: 0,
-      countEnd: 6,
+      countEnd: 12,
       order: "desc",
       orderBy: "sold",
       callBack: getData,
@@ -24,8 +24,8 @@ const BestSellingProduct = () => {
   return (
     <div className="py-8">
       <div className="container m-auto px-3 sm:px-0">
-        <h1 className="text-3xl text-black">
-          Best <span className="text-primary">Selling </span>Product.
+        <h1 className="text-4xl font-semibold text-black">
+          Best Selling Product.
         </h1>
         <Swiper
           breakpoints={{

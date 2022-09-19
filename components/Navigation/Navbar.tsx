@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Icons } from "../index";
 import { motion } from "framer-motion";
@@ -6,36 +6,44 @@ import { Button } from "../index";
 
 const Navbar = () => {
   const [isSidebar, setIsSidebar] = useState(false);
+  const [navbarHeight, setNavbarHeight] = useState(null);
+  const navbarRef = useRef(null);
 
+  useEffect(() => {
+    setNavbarHeight(navbarRef?.current?.offsetWidth);
+  });
+  {
+    /* backdrop-blur-lg bg-white/30 */
+  }
   return (
-    <div className="w-[100%] fixed top-0 left-0 z-40 backdrop-blur-lg bg-white/30">
+    <div className="w-[100%] fixed top-0 left-0 z-40 bg-white" ref={navbarRef}>
       <div className="container m-auto flex items-center justify-between px-4 sm:px-0 py-4 sm:py-0">
         {/* Logo Start */}
         <Link href="/">
           <h1 className="text-black text-3xl font-semibold cursor-pointer">
-            Kina<span className="text-secondary ml-[4px]">Kata</span>
+            Kina<span className="text-primary ml-[4px]">Kata</span>
           </h1>
         </Link>
         {/* Logo End */}
         {/* Normal Menu Start */}
         <div className="hidden sm:flex">
           <Link href="/">
-            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
+            <button className="text-black px-3 py-7 transition ease-in focus:text-primary active:text-primary hover:text-primary  ">
               Home
             </button>
           </Link>
           <Link href="/products">
-            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30 ">
+            <button className="text-black px-3 py-7 transition ease-in focus:text-primary active:text-primary hover:text-primary  ">
               Products
             </button>
           </Link>
           <Link href="/about">
-            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
+            <button className="text-black px-3 py-7 transition ease-in focus:text-primary active:text-primary hover:text-primary ">
               About
             </button>
           </Link>
           <Link href="/contact">
-            <button className="text-black px-3 py-7 transition ease-in focus:backdrop-blur-lg active:backdrop-blur-lg hover:backdrop-blur-lg focus:bg-purple/30  active:bg-purple/30 hover:bg-purple/30">
+            <button className="text-black px-3 py-7 transition ease-in focus:text-primary active:text-primary hover:text-primary ">
               Contact
             </button>
           </Link>
@@ -43,11 +51,11 @@ const Navbar = () => {
         {/* Normal Menu end */}
         {/* Normal Button Start */}
         <div className="hidden sm:flex items-center">
-          <Button className="mr-2" type="secondary">
+          <Button className="mr-2" type="primary" href={"login"}>
             <span className="text-lg xl:mr-2">{Icons.loginIcon}</span>
             <span className="hidden xl:block">Login</span>
           </Button>
-          <Button type="secondary">
+          <Button type="primary" href={"cart"}>
             <span className="text-lg xl:mr-2">{Icons.cartIcon}</span>
             <span className="hidden xl:block">Cart</span>
           </Button>
@@ -98,11 +106,11 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex wrap mt-4 pl-6">
-              <Button className="mr-2" type="secondary">
+              <Button className="mr-2" type="secondary" href={"login"}>
                 <span className="text-lg mr-2">{Icons.loginIcon}</span>
                 <span className="block">Login</span>
               </Button>
-              <Button type="secondary">
+              <Button type="secondary" href={"cart"}>
                 <span className="text-lg mr-2">{Icons.cartIcon}</span>
                 <span className="block">Cart</span>
               </Button>
