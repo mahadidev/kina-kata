@@ -1,64 +1,77 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { Icons } from "../index";
 import { motion } from "framer-motion";
+import { WrapperPropery, ButtonPropery } from "./ButtonClasss";
+
+interface ButtonType {
+  children: any;
+  animation?: boolean;
+  onClick?: any;
+  href?: any;
+  type?: "primary" | "white" | "secondary" | "outline" | any;
+  className?: string;
+  btnClassName?: string;
+  btnBadge?: any;
+}
 
 const Button = ({
   children,
   animation = true,
   onClick = () => {},
   href,
-  width,
   type,
   className,
-  circle,
-}: {
-  children: any;
-  animation?: boolean;
-  onClick?: any;
-  href?: any;
-  width?: string;
-  type?: "primary" | "white" | "secondary" | "outline" | any;
-  className?: string;
-  circle?: boolean;
-}) => {
-  const ButtonType = {
-    primary: `bg-gradient-to-r from-primary to-primary/90 text-white ${
-      circle ? "px-2" : "px-4"
-    } py-2`,
-    secondary: `bg-gradient-to-r from-secondary to-secondary/90 text-white ${
-      circle ? "px-2" : "px-4"
-    } py-2`,
-    white: `bg-white text-red ${circle ? "px-2" : "px-4"} py-2`,
-    outline: "",
-  };
+  btnClassName,
+  btnBadge,
+}: ButtonType) => {
+  const wrapperRef = useRef(null);
+  const btnRef = useRef(null);
 
-  const checkBtnType =
-    type in ButtonType ? ButtonType[type] : ButtonType.primary;
+  const [badgeWidth, setBadgeWidth] = useState(null);
+  const btnBadgeRef = useRef(null);
 
-  const btnClass = `${
-    width ? "w-[" + width + "]" : "w-[max-content]"
-  } ${checkBtnType} flex items-center ${
-    circle ? "rounded-full" : "rounded"
-  } cursor-pointer justify-center`;
-
+  useEffect(() => {
+    setBadgeWidth(btnBadgeRef?.current?.offsetHeight);
+  });
   return (
     <motion.div
-      whileHover={animation && { scale: 1.05 }}
-      whileTap={animation && { scale: 0.95 }}
-      className={`${width ? "w-[" + width + "]" : "w-[max-content]"}  ${
-        className ? className : ""
-      }`}
+      whileHover={animation && { scale: 1.01 }}
+      whileTap={animation && { scale: 0.99 }}
+      ref={wrapperRef}
+      {...WrapperPropery({
+        type: type,
+        wrapperClass: className,
+        ref: wrapperRef,
+      })}
     >
+      {btnBadge && (
+        <span
+          className="absolute bg-white rounded-full text-black flex items-center justify-center top-[-5px] right-[-5px] cursor-pointer shadow-md"
+          style={{ width: `${badgeWidth}px` }}
+          ref={btnBadgeRef}
+        >
+          {btnBadge}
+        </span>
+      )}
+
       {onClick && !href && (
-        <button className={btnClass} onClick={onClick}>
+        <button
+          {...ButtonPropery({ btnClass: btnClassName, ref: btnRef })}
+          onClick={onClick}
+          ref={btnRef}
+        >
           {children}
         </button>
       )}
 
       {href && (
         <Link href={href}>
-          <button className={btnClass}>{children}</button>
+          <button
+            {...ButtonPropery({ btnClass: btnClassName, ref: btnRef })}
+            ref={btnRef}
+          >
+            {children}
+          </button>
         </Link>
       )}
     </motion.div>

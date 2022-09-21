@@ -11,6 +11,7 @@ const PromoBanner = ({
   btnIcon,
   btnLink,
   btnType,
+  btnShadow,
   bgColor,
   textColor,
   textColor2,
@@ -22,6 +23,7 @@ const PromoBanner = ({
   btnIcon?: string;
   btnLink?: string;
   btnType?: string;
+  btnShadow?: boolean;
   bgColor: string;
   textColor: string;
   textColor2: string;
@@ -66,13 +68,15 @@ const PromoBanner = ({
             ))}
             {btnLabel && (
               <Button
-                className="md:absolute ml-4 md:ml-0 mt-2 md:mt-0 right-8 bottom-8"
+                className={`md:absolute ml-4 md:ml-0 mt-2 md:mt-0 right-4 bottom-4`}
                 href={`${btnLink}`}
                 type={`${btnType}`}
               >
                 {btnLabel}
                 {btnIcon && (
-                  <span className="text-2xl ml-3">{Icons[btnIcon]}</span>
+                  <span className="text-2xl ml-3 flex items-center">
+                    {Icons[btnIcon]}
+                  </span>
                 )}
               </Button>
             )}

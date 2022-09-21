@@ -45,12 +45,12 @@ const BestSellingProduct = () => {
               slidesPerView: 6,
             },
           }}
-          spaceBetween={8}
+          spaceBetween={16}
           className={"py-4"}
         >
           {products?.map((product: any, i: number) => (
             <SwiperSlide key={i}>
-              <Product width="w-[100%]" {...product} />
+              <Product width="w-[100%]" product={product} />
             </SwiperSlide>
           ))}
         </Swiper>

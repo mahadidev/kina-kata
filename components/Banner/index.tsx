@@ -23,13 +23,13 @@ const Banner = ({ name }: { name: string }) => {
       bgColor: "bg-secondary",
       textColor: "text-white",
       textColor2: "text-primary",
-      btnType: "primary",
+      btnType: "white",
     },
     white: {
       bgColor: "bg-white",
       textColor: "text-black",
       textColor2: "text-primary",
-      btnType: "primary",
+      btnType: "outline",
     },
   };
 

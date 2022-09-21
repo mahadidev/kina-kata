@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { ImageUrl } from "../../utils";
 import { motion } from "framer-motion";
 import { Button } from "../index";
 import { Icons } from "../index";
-import ParticlesBg from "./ParticlesBg";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
 const StandardBanner = ({
   image,
@@ -27,16 +29,23 @@ const StandardBanner = ({
   textColor: string;
   textColor2: string;
 }) => {
+  const navigationHeight = useSelector(
+    (state: RootState) => state.basic.navigationHeight
+  );
+
   return (
     <>
       <div
-        className={`relative bg-top bg-cover bg-no-repeat `}
-        style={{ backgroundImage: `url(${ImageUrl(image).url()})` }}
+        className={`relative bg-top bg-cover bg-no-repeat flex items-center flex-wrap justify-start`}
+        style={{
+          backgroundImage: `url(${ImageUrl(image).url()})`,
+          height: `calc(100vh - ${navigationHeight}px)`,
+        }}
       >
-        <ParticlesBg />
-        <div className="container flex items-center justify-between min-h-[870px] m-auto relative px-4 sm:px-0 overflow-hidden">
+        {/* <ParticlesBg /> */}
+        <div className="container m-auto relative px-4 sm:px-0 overflow-hidden">
           {/*  backdrop-blur-lg bg-white/30 */}
-          <div className="w-[max-content] max-w-[700px] z-10 p-4 rounded-lg">
+          <div className="w-[100%] max-w-[700px] z-10 rounded-lg">
             {title && (
               <h1
                 className={`${textColor} text-7xl font-bold font-title mb-3`}
@@ -51,30 +60,14 @@ const StandardBanner = ({
                 className={"mt-2"}
               >
                 {btnIcon && (
-                  <span className="text-2xl mr-1">{Icons[btnIcon]}</span>
+                  <span className="text-2xl mr-1 flex items-center">
+                    {Icons[btnIcon]}
+                  </span>
                 )}
                 {btnLabel}
               </Button>
             )}
           </div>
-          {/* {image && (
-            <motion.div
-              animate={{ scale: 1.1 }}
-              transition={{
-                ease: "linear",
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-              className="absolute max-w-[100%] w-[800px] hidden right-0 top-0 children-block"
-            >
-              <img
-                className="block w-[100%]"
-                src={ImageUrl(image).url()}
-                alt="banner image"
-              />
-            </motion.div> 
-          )}*/}
         </div>
       </div>
     </>

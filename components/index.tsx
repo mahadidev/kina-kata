@@ -1,6 +1,8 @@
 export { default as Navbar } from "./Navigation/Navbar";
 export { default as StandardBanner } from "./Banner/StandardBanner";
 export { default as PromoBanner } from "./Banner/PromoBanner";
+export { default as Breadcrumb } from "./Breadcrumb/Breadcrumb";
+export { default as About } from "./About/About";
 export { default as Banner } from "./Banner";
 export { default as Categories } from "./Categories/Categories";
 export { default as Category } from "./Category/Category";

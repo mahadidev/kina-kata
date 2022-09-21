@@ -9,18 +9,18 @@ import Offer4 from "../../assets/image/offer-4.webp";
 import { Icons } from "../index";
 
 const PromoCard = () => {
-  const [swiper, setSwiper] = useState();
+  const [swiper, setSwiper] = useState(null);
   const sliderData = [Offer1, Offer2, Offer3, Offer4];
 
   useEffect(() => {}, []);
 
   return (
     <div className="px-4 py-8 overflow-hidden">
-      <div className="relative">
+      <div className="relative flex items-center">
         <Button
-          className="absolute top-0 bottom-0 left-[-16px] z-10 flex items-center"
+          className="absolute top-auto bottom-auto left-[-16px] z-10 circle"
+          btnClassName="p-2"
           type="white"
-          circle={true}
           onClick={() => {
             swiper?.slidePrev();
           }}
@@ -28,9 +28,9 @@ const PromoCard = () => {
           {Icons.arrowShortLeftIcon}
         </Button>
         <Button
-          className="absolute top-0 bottom-0 right-[-16px] z-10 flex items-center"
+          className="absolute top-auto bottom-auto right-[-16px] z-10 circle"
+          btnClassName="p-2"
           type="white"
-          circle={true}
           onClick={() => {
             swiper?.slideNext();
           }}
