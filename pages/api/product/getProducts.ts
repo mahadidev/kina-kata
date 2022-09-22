@@ -29,10 +29,12 @@ export default async function handler(
       checkCount = `[0...${params[ApiSubject.countEnd]}]`;
     }
   }
+  // check custom query
+  const customQuery = params.customQuery ? `&& ${params.customQuery}` : "";
 
   const query = `*[_type == '${
     params[ApiSubject.table]
-  }'] ${checkOrder} ${checkCount}`;
+  }' ${customQuery}] ${checkOrder} ${checkCount}`;
   const products = await Client.fetch(query);
 
   res.status(200).json(products);

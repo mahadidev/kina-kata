@@ -23,7 +23,7 @@ const BestSellingProduct = () => {
 
   return (
     <div className="py-8">
-      <div className="container m-auto px-3 sm:px-0">
+      <div className="container m-auto">
         <h1 className="text-4xl font-semibold text-black">
           Best Selling Product.
         </h1>

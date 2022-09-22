@@ -54,7 +54,7 @@ const Products = ({
 
   return (
     <div className="py-8">
-      <div className="container m-auto px-3 sm:px-0">
+      <div className="container m-auto">
         <h1 className="text-4xl font-semibold text-black">All Product.</h1>
         <div className="flex flex-wrap justify-center sm:justify-start py-4">
           {productsData?.map((product: any, i: number) => {

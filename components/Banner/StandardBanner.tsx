@@ -43,7 +43,7 @@ const StandardBanner = ({
         }}
       >
         {/* <ParticlesBg /> */}
-        <div className="container m-auto relative px-4 sm:px-0 overflow-hidden">
+        <div className="container m-auto relative overflow-hidden">
           {/*  backdrop-blur-lg bg-white/30 */}
           <div className="w-[100%] max-w-[700px] z-10 rounded-lg">
             {title && (

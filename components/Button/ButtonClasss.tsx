@@ -26,14 +26,18 @@ export const WrapperPropery = ({
 
   const className = `flex items-center justify-center text-center ${checkBtnType} ${checkBtnWidth} ${checkBtnPosition} ${
     wrapperClass ? wrapperClass : ""
-  } ${wrapperClass?.includes("circle") ? `rounded-full` : "rounded"}`;
+  } ${
+    wrapperClass?.includes("circle")
+      ? `rounded-full`
+      : `${wrapperClass?.includes("rounded-") ? "" : "rounded"}`
+  }`;
 
   return {
     className: className,
     style: {
       height: wrapperClass?.includes("circle")
         ? `${ref?.current?.offsetWidth}px`
-        : "max-content",
+        : `${wrapperClass?.includes("h-") ? "" : "max-content"}`,
     },
   };
 };

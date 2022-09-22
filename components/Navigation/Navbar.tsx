@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="w-[100%] fixed top-0 left-0 z-40 bg-white" ref={navbarRef}>
-      <div className="container m-auto flex items-center justify-between px-4 sm:px-0 py-4 sm:py-0">
+      <div className="container m-auto flex items-center justify-between py-4 sm:py-0">
         {/* Logo Start */}
         <Link href="/">
           <h1 className="text-black text-3xl font-semibold cursor-pointer">

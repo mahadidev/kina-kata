@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/globals.css";
-import Navbar from "../components/Navigation/Navbar";
+import { Footer, Navbar } from "../components";
 import { store } from "../redux/store";
 import { Provider } from "react-redux";
 
@@ -13,6 +13,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </Provider>
   );
 };

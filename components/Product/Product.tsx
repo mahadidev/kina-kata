@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icons } from "../index";
 import { ImageUrl } from "../../utils/";
@@ -161,13 +162,15 @@ const Product = ({
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <a href="#">
-                        <span
-                          aria-hidden="true"
-                          className="absolute inset-0"
-                        ></span>
-                        {product?.name}
-                      </a>
+                      <Link href={`/product/${product?.name}`}>
+                        <a>
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          ></span>
+                          {product?.name}
+                        </a>
+                      </Link>
                     </h3>
                     <div className="w-[100%] flex items-center">
                       <Rating

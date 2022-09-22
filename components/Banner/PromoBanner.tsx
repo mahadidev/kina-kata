@@ -46,7 +46,7 @@ const PromoBanner = ({
           />
         )}
         <div
-          className={`container relative ${bgColor} rounded-xl py-8 px-2 mx-2 sm:mx-auto shadow-sm`}
+          className={`container relative ${bgColor} rounded-xl py-8 sm:mx-auto shadow-sm`}
         >
           {title && (
             <h1

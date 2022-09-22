@@ -8,6 +8,7 @@ const FetchData = ({
   countEnd,
   order,
   orderBy,
+  customQuery,
   callBack,
 }: {
   name: string;
@@ -15,6 +16,7 @@ const FetchData = ({
   countEnd?: number | boolean;
   order?: "asc" | "desc";
   orderBy?: string;
+  customQuery?: string;
   callBack: CallableFunction;
 }) => {
   // api url
@@ -40,7 +42,7 @@ const FetchData = ({
     if (orderBy) {
       params = params + `${ApiSubject.orderBy}=${orderBy}&`;
     }
-    url = url + params;
+    url = url + params + (customQuery ? `customQuery=${customQuery}` : "");
     axios
       .get(url)
       .then((response) => {
