@@ -7,7 +7,7 @@ const Products = ({
 	isMinimal,
 }: {
 	count: number;
-	isMinimal: boolean;
+	isMinimal?: boolean;
 }) => {
 	const [productCount, setProductCount] = useState(0);
 	const [perLoading, setPerLoading] = useState(count);

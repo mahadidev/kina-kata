@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { About } from '../../components';
 import { type RootState } from '../../redux/store';
 
-const index = () => {
+const AboutPage = () => {
 	const navigationHeight = useSelector(
 		(state: RootState) => state.basic.navigationHeight
 	);
@@ -20,4 +20,4 @@ const index = () => {
 	);
 };
 
-export default index;
+export default AboutPage;

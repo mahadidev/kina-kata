@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Contact } from '../../components';
 import { type RootState } from '../../redux/store';
 
-const index = () => {
+const ContactPage = () => {
 	const navigationHeight = useSelector(
 		(state: RootState) => state.basic.navigationHeight
 	);
@@ -20,4 +20,4 @@ const index = () => {
 	);
 };
 
-export default index;
+export default ContactPage;
