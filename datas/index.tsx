@@ -1,1 +1,0 @@
-export { BestSellingProductData } from "./products";
