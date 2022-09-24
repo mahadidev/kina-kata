@@ -107,4 +107,60 @@ export const BG = [
 		value: 'bg-transparent',
 		color: '#0000',
 	},
+	{
+		title: 'Sky Blue Light',
+		value: 'bg-blue-light',
+		color: '#78c5f6',
+	},
+	{
+		title: 'Sky Blue',
+		value: 'bg-blue',
+		color: '#78c5f6',
+	},
+	{
+		title: 'Sky Blue Gradient',
+		value: 'bg-gradient-to-r from-blue to-blue-light',
+	},
+	{
+		title: 'Green Light',
+		value: 'bg-green-light',
+		color: '#90ccad',
+	},
+	{
+		title: 'Green',
+		value: 'bg-green',
+		color: '#90ccad',
+	},
+	{
+		title: 'Green Gradient',
+		value: 'bg-gradient-to-r from-green to-green-light',
+	},
+	{
+		title: 'Pink Light',
+		value: 'bg-pink-light',
+		color: '#e47fc9',
+	},
+	{
+		title: 'Pink',
+		value: 'bg-pink',
+		color: '#e47fc9',
+	},
+	{
+		title: 'Pink Gradient',
+		value: 'bg-gradient-to-r from-pink to-pink-light',
+	},
+	{
+		title: 'Orange Light',
+		value: 'bg-orange-light',
+		color: '#fcaf65',
+	},
+	{
+		title: 'Orange',
+		value: 'bg-orange',
+		color: '#fcaf65',
+	},
+	{
+		title: 'Orange Gradient',
+		value: 'bg-gradient-to-r from-orange to-orange-light',
+	},
 ];

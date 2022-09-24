@@ -17,7 +17,7 @@ const PromoCard = ({ name }: { name: string }) => {
 	const [data, setData] = useState(null);
 	const getData = (data: any) => {
 		setData(data);
-		console.log([...data.image, ...data.card]);
+		console.log(data);
 	};
 
 	useEffect(() => {
@@ -26,12 +26,13 @@ const PromoCard = ({ name }: { name: string }) => {
         name,
         type,
         image,
-        "card": *[_type == "card" && _id == ^.card[0]._ref]{
+        "card": *[_type == "card" && _id in ^.card[]._ref]{
+			 title,
           name,
           desc,
           bgColor,
           titleColor,
-          whiteColor,
+          descColor,
           btnLabel,
           btnLink,
           "btnType": *[_type == "button" && _id == ^.btnType._ref][0]
@@ -101,17 +102,25 @@ const PromoCard = ({ name }: { name: string }) => {
 									</div>
 								) : (
 									<div
-										className={`w-full ${
-											item.bgColor ? item.bgColor : 'bg-primary-dark'
-										} ${
-											item.textColor ? item.textColor : 'text-white'
-										} p-4 rounded-lg flex justify-center flex-col`}
+										className={`w-full ${item.bgColor} p-4 rounded-lg flex justify-center flex-col`}
 										style={{
 											minHeight: `${slideRef?.current?.offsetHeight}px`,
 										}}
 									>
-										<h1 className="text-xl">{item.name}</h1>
-										<p className="text-sm mt-1">{item.desc}</p>
+										<h1
+											className={`${
+												item.titleColor ? item.titleColor : 'text-white'
+											} text-2xl font-semibold`}
+										>
+											{item.title}
+										</h1>
+										<p
+											className={`${
+												item.titleColor ? item.titleColor : 'text-white'
+											} mt-1`}
+										>
+											{item.desc}
+										</p>
 										<Button
 											type={item.btnType}
 											className="w-[max-content] mt-1"
