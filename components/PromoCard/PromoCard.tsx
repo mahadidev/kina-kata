@@ -96,7 +96,7 @@ const PromoCard = ({ name }: { name: string }) => {
 									>
 										<img
 											className="w-[100%]"
-											src={ImageUrl(item)}
+											src={ImageUrl(item).url()}
 											alt={'Delivery Image'}
 										/>
 									</div>
