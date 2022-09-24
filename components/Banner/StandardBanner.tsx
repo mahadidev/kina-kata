@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import { ImageUrl } from '../../utils';
-import { Button, Icons } from '../index';
+import Button from '../Button';
+import { Icons } from '../index';
 
 const StandardBanner = ({
 	image,
@@ -32,32 +33,42 @@ const StandardBanner = ({
 		(state: RootState) => state.basic.navigationHeight
 	);
 
+	useEffect(() => {
+		console.log(btnType);
+	});
+
 	return (
 		<>
 			<div
-				className={`relative bg-top bg-cover bg-no-repeat flex items-center flex-wrap justify-start`}
+				className={`relative ${bgColor ? bgColor : 'bg-primary-dark'} ${
+					image ? '' : 'bg-top bg-cover bg-no-repeat'
+				} flex items-center flex-wrap justify-start`}
 				style={{
-					backgroundImage: `url(${ImageUrl(image).url()})`,
+					backgroundImage: `url(${image && ImageUrl(image).url()})`,
 					height: `calc(100vh - ${navigationHeight}px)`,
 				}}
 			>
-				{/* <ParticlesBg /> */}
 				<div className="container m-auto relative overflow-hidden">
-					{/*  backdrop-blur-lg bg-white/30 */}
 					<div className="w-[100%] max-w-[700px] z-10 rounded-lg">
 						{title && (
 							<h1
-								className={`${textColor} text-7xl font-bold font-title mb-3`}
+								className={`${
+									textColor ? textColor : 'text-white'
+								} text-7xl font-bold font-title mb-3`}
 								dangerouslySetInnerHTML={{ __html: title }}
 							/>
 						)}
-						{desc && <p className={`${textColor} max-w-[400px]`}>{desc}</p>}
-						{btnLabel && (
-							<Button
-								type={`${btnType}`}
-								href={`${btnLink}`}
-								className={'mt-2'}
+						{desc && (
+							<p
+								className={`${
+									textColor2 ? textColor2 : 'text-white-light'
+								} max-w-[400px]`}
 							>
+								{desc}
+							</p>
+						)}
+						{btnLabel && (
+							<Button type={btnType} className={'mt-4'}>
 								{btnIcon && (
 									<span className="text-2xl mr-1 flex items-center">
 										{Icons[btnIcon]}

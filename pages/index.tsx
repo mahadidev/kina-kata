@@ -12,7 +12,7 @@ const HomePage = () => {
 			<PromoCard />
 			<BestSellingProduct />
 			<Banner name={'homePromoBanner'} />
-			<Products count={6} />
+			<Products count={5} />
 		</div>
 	);
 };

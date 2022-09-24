@@ -7,16 +7,13 @@ const BestSellingProduct = () => {
 	const [products, setProducts] = useState(null);
 	const getData = (data: any) => {
 		setProducts(data);
+		console.log(data);
 	};
 
 	useEffect(() => {
 		// fetch data
 		FetchData({
-			name: 'product',
-			countStart: 0,
-			countEnd: 12,
-			order: 'desc',
-			orderBy: 'sold',
+			query: `*[_type == "product"] | order(sold desc) [0...7]`,
 			callBack: getData,
 		});
 	}, []);
@@ -37,10 +34,10 @@ const BestSellingProduct = () => {
 							slidesPerView: 4,
 						},
 						1280: {
-							slidesPerView: 5,
+							slidesPerView: 4,
 						},
 						1536: {
-							slidesPerView: 6,
+							slidesPerView: 5,
 						},
 					}}
 					spaceBetween={25}

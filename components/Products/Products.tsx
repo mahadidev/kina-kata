@@ -37,9 +37,9 @@ const Products = ({
 
 	const callProduct = (countStart: number) => {
 		FetchData({
-			name: 'product',
-			countStart: countStart,
-			countEnd: countStart + (perLoading + 1),
+			query: `*[_type == "product"] [${countStart}...${
+				countStart + perLoading + 1
+			}]`,
 			callBack: getProduct,
 		});
 	};
@@ -53,10 +53,10 @@ const Products = ({
 	}, []);
 
 	return (
-		<div className="py-8">
+		<div className="py-8 pb-16">
 			<div className="container m-auto">
 				<h1 className="text-3xl text-black">All Product.</h1>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 justify-center sm:justify-start gap-6 pt-4">
+				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center sm:justify-start gap-6 pt-4">
 					{productsData?.map((product: any, i: number) => {
 						return <Product key={i} product={product} isMinimal={isMinimal} />;
 					})}

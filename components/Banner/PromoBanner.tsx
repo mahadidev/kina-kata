@@ -45,31 +45,51 @@ const PromoBanner = ({
 					/>
 				)}
 				<div
-					className={`container relative ${bgColor} rounded-xl py-8 sm:mx-auto shadow-sm`}
+					className={`container relative ${
+						bgColor ? bgColor : 'bg-white-dark'
+					} rounded-xl py-8 sm:mx-auto shadow-sm`}
 				>
 					{title && (
 						<h1
-							className={`${textColor} text-3xl ml-4 mb-2`}
+							className={`${
+								textColor ? textColor : 'text-white'
+							} text-3xl ml-4 mb-2`}
 							dangerouslySetInnerHTML={{ __html: title }}
 						/>
 					)}
 					<div className="flex flex-wrap max-w-[580px]">
 						{details?.map((item: any, i: number) => (
 							<div className="flex max-w-[280px] p-2 items-center" key={i}>
-								<span className={`text-5xl ${textColor} mr-3`}>
+								<span
+									className={`text-5xl ${
+										textColor2 ? textColor2 : 'text-white-dark'
+									} mr-3`}
+								>
 									{Icons[item.icon]}
 								</span>
 								<div className="pl-2">
-									<h2 className={`text-lg ${textColor}`}>{item.title}</h2>
-									<p className={`text-sm ${textColor}`}>{item.desc}</p>
+									<h2
+										className={`text-lg ${
+											textColor2 ? textColor2 : 'text-white-dark'
+										}`}
+									>
+										{item.title}
+									</h2>
+									<p
+										className={`text-sm ${
+											textColor2 ? textColor2 : 'text-white-dark'
+										}`}
+									>
+										{item.desc}
+									</p>
 								</div>
 							</div>
 						))}
 						{btnLabel && (
 							<Button
 								className={`md:absolute ml-4 md:ml-0 mt-2 md:mt-0 right-4 bottom-4`}
-								href={`${btnLink}`}
-								type={`${btnType}`}
+								href={btnLink}
+								type={btnType}
 							>
 								{btnLabel}
 								{btnIcon && (
