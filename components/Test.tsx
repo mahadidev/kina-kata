@@ -36,12 +36,7 @@ const Test = ({ title }) => {
 		// fetch data
 		if (title) {
 			FetchData({
-				name: 'product',
-				countStart: 0,
-				countEnd: 12,
-				order: 'desc',
-				orderBy: 'sold',
-				customQuery: `name match '${title}'`,
+				query: `*[_type == "product" && name == '${title}']`,
 				callBack: getData,
 			});
 		}
