@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Button = ({
 	children,
-	type,
+	type = false,
 	className,
 	href,
 	onClick = () => {},
@@ -14,30 +14,38 @@ const Button = ({
 	href?: string;
 	onClick?: any;
 }) => {
-	const classChecker = `px-4 py-2 ${
-		type.bgColor ? type.bgColor : 'bg-primary'
-	} ${type.textColor ? type.textColor : 'text-white'} ${
-		type.rounded ? type.rounded : 'rounded-sm'
-	} ${type.fontSize ? type.fontSize : 'text-md'} ${
-		type.paddingX ? type.paddingX : 'px-4'
-	} ${type.paddingY ? type.paddingY : 'py-2'} ${
-		className ? className : ''
-	} flex items-center`;
+	const [classList, setClassList] = useState(
+		`px-4 py-2 ${type.bgColor ? type.bgColor : 'bg-primary'} ${
+			type.textColor ? type.textColor : 'text-black-light'
+		} ${type.rounded ? type.rounded : 'rounded-sm'} ${
+			type.fontSize ? type.fontSize : 'text-md'
+		} ${type.paddingX ? type.paddingX : 'px-4'} ${
+			type.paddingY ? type.paddingY : 'py-2'
+		} ${className ? className : ''} flex items-center`
+	);
 
 	useEffect(() => {
-		console.log(type);
+		setClassList(
+			`px-4 py-2 ${type.bgColor ? type.bgColor : 'bg-primary'} ${
+				type.textColor ? type.textColor : 'text-white'
+			} ${type.rounded ? type.rounded : 'rounded-sm'} ${
+				type.fontSize ? type.fontSize : 'text-md'
+			} ${type.paddingX ? type.paddingX : 'px-4'} ${
+				type.paddingY ? type.paddingY : 'py-2'
+			} ${className ? className : ''} flex items-center`
+		);
 	}, [type]);
 
 	return (
 		<>
 			{onClick && !href && (
-				<button className={`${classChecker}`} onClick={onClick}>
+				<button className={classList} onClick={onClick}>
 					{children}
 				</button>
 			)}
 			{href && (
 				<Link href={href}>
-					<button className={`${classChecker}`}>{children}</button>
+					<button className={`${classList}`}>{children}</button>
 				</Link>
 			)}
 		</>

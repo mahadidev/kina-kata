@@ -33,10 +33,6 @@ const StandardBanner = ({
 		(state: RootState) => state.basic.navigationHeight
 	);
 
-	useEffect(() => {
-		console.log(btnType);
-	});
-
 	return (
 		<>
 			<div

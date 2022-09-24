@@ -7,7 +7,6 @@ const BestSellingProduct = () => {
 	const [products, setProducts] = useState(null);
 	const getData = (data: any) => {
 		setProducts(data);
-		console.log(data);
 	};
 
 	useEffect(() => {

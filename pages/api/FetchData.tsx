@@ -13,7 +13,6 @@ const FetchData = ({
 	axios
 		.post(url, {
 			query: query,
-			name: 'mahadi',
 		})
 		.then((response) => {
 			if (callBack) {

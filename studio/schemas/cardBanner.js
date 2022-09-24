@@ -47,5 +47,15 @@ export default {
 				},
 			],
 		},
+		{
+			name: 'btnType',
+			title: 'Button Type',
+			type: 'reference',
+			to: [
+				{
+					type: 'button',
+				},
+			],
+		},
 	],
 };
