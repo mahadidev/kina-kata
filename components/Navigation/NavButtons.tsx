@@ -17,11 +17,7 @@ const NavButtons = ({ className }: { className?: string }) => {
 				</span>
 				<span className="block">Login</span>
 			</Button>
-			<Button
-				type="primary"
-				href={'cart'}
-				btnBadge={totalProduct > 0 ? totalProduct : false}
-			>
+			<Button type="primary" href={'cart'}>
 				<span className="text-lg mr-2 flex items-center">{Icons.cartIcon}</span>
 				<span className="block">Cart</span>
 			</Button>
