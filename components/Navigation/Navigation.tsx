@@ -19,7 +19,7 @@ const Navigation = () => {
 			<div className="container m-auto">
 				<Navbar />
 			</div>
-			<Cart showCart={true} />
+			<Cart />
 		</div>
 	);
 };
