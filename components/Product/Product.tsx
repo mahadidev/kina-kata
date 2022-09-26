@@ -96,7 +96,7 @@ const Product = ({
 										<span className="pl-1 text-sm">({product?.sold})</span>
 									</div>
 								</div>
-								<p className="text-sm font-medium text-gray-900">
+								<p className="text-sm font-medium text-black-light">
 									${product?.price}
 								</p>
 							</div>

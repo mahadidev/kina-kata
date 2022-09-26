@@ -7,46 +7,47 @@ const Button = ({
 	className,
 	href,
 	onClick = () => {},
+	disabled,
 }: {
 	children: any;
 	type?: any;
 	className?: string;
 	href?: string;
 	onClick?: any;
+	disabled?: boolean;
 }) => {
-	const [classList, setClassList] = useState(
-		`px-4 py-2 ${type.bgColor ? type.bgColor : 'bg-primary'} ${
-			type.textColor ? type.textColor : 'text-black-light'
-		} ${type.rounded ? type.rounded : 'rounded-sm'} ${
-			type.fontSize ? type.fontSize : 'text-md'
-		} ${type.paddingX ? type.paddingX : 'px-4'} ${
-			type.paddingY ? type.paddingY : 'py-2'
-		} ${className ? className : ''} flex items-center`
-	);
-
-	useEffect(() => {
-		setClassList(
-			`px-4 py-2 ${type.bgColor ? type.bgColor : 'bg-primary'} ${
-				type.textColor ? type.textColor : 'text-white'
-			} ${type.rounded ? type.rounded : 'rounded-sm'} ${
-				type.fontSize ? type.fontSize : 'text-md'
-			} ${type.paddingX ? type.paddingX : 'px-4'} ${
-				type.paddingY ? type.paddingY : 'py-2'
-			} ${className ? className : ''} flex items-center`
-		);
-	}, [type]);
+	const btnClass = `${
+		className?.includes('bg-') && !className?.includes(':bg-')
+			? ''
+			: 'bg-primary hover:bg-primary-light'
+	} ${className?.includes('text-') ? '' : 'text-white'} ${
+		className?.includes('rounded-') ? '' : 'rounded-md'
+	} ${className?.includes('text-') ? '' : 'text-md'} ${
+		className?.includes('block') ? '' : 'flex'
+	} ${className?.includes('items-') ? '' : 'items-center'} ${
+		className?.includes('justify-') ? '' : 'justify-center'
+	} ${className?.includes('px-') || className?.includes('p-') ? '' : 'px-4'} ${
+		className?.includes('py-') || className?.includes('p-') ? '' : 'py-2'
+	} ${className?.includes('absolute') ? '' : 'relative'} ${className} ${
+		className?.includes('text-start') || className?.includes('text-end')
+			? ''
+			: 'text-center'
+	} transition-all disabled:cursor-not-allowed`;
 
 	return (
 		<>
-			{onClick && !href && (
-				<button className={classList} onClick={onClick}>
+			{href && (
+				<Link href={href ? href : '#'}>
+					<button onClick={onClick} className={btnClass} disabled={disabled}>
+						{children}
+					</button>
+				</Link>
+			)}
+
+			{!href && (
+				<button className={btnClass} onClick={onClick} disabled={disabled}>
 					{children}
 				</button>
-			)}
-			{href && (
-				<Link href={href}>
-					<button className={`${classList}`}>{children}</button>
-				</Link>
 			)}
 		</>
 	);

@@ -7,6 +7,7 @@ import card from './card';
 import cardBanner from './cardBanner';
 import category from './category';
 import feedback from './feedback';
+import menu from './menu';
 import product from './product';
 import user from './user';
 
@@ -21,5 +22,6 @@ export default createSchema({
 		button,
 		cardBanner,
 		card,
+		menu,
 	]),
 });

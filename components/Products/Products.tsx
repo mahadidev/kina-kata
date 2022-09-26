@@ -12,6 +12,7 @@ const Products = ({
 	const [productCount, setProductCount] = useState(0);
 	const [perLoading, setPerLoading] = useState(count);
 	const [productsData, setProductsData] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const getProduct = (data: any) => {
 		setProductsData(data);
@@ -33,6 +34,7 @@ const Products = ({
 				}
 			});
 		}
+		setIsLoading(false);
 	};
 
 	const callProduct = (countStart: number) => {
@@ -45,6 +47,7 @@ const Products = ({
 	};
 
 	const loadMoreHandle = () => {
+		setIsLoading(true);
 		callProduct(productCount);
 	};
 
@@ -65,10 +68,10 @@ const Products = ({
 				{productCount !== null && (
 					<Button
 						onClick={loadMoreHandle}
-						className="mt-8 mx-auto"
-						type="primary"
+						className="bg-primary-dark mt-8 mx-auto disabled:bg-black-light"
+						disabled={isLoading}
 					>
-						Load More
+						{isLoading ? 'loading...' : 'Load More'}
 					</Button>
 				)}
 			</div>

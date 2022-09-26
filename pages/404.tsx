@@ -2,7 +2,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import notFoundAnimation from '../assets/lotties/notFound_animation.json';
-import { type RootState } from '../redux/store';
+import { type RootState } from '../redux';
 
 const NotFoundPage = () => {
 	const navigationHeight = useSelector(

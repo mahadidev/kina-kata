@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Button, Icons } from '../index';
 
@@ -6,14 +6,16 @@ const Qty = ({
 	onChange = () => {},
 	maxQty,
 	minQty = 1,
+	defaultQty = 1,
 	className,
 }: {
 	onChange: CallableFunction;
 	maxQty: number;
 	minQty: number;
+	defaultQty?: number;
 	className?: string;
 }) => {
-	const [qty, setQty] = useState(1);
+	const [qty, setQty] = useState(defaultQty);
 
 	const Controller = (type: string, count: number = 1) => {
 		let qtyCounter = qty;
@@ -34,6 +36,10 @@ const Qty = ({
 		setQty(qtyCounter);
 	};
 
+	useEffect(() => {
+		setQty(defaultQty);
+	}, [defaultQty]);
+
 	return (
 		<>
 			<div
@@ -43,10 +49,7 @@ const Qty = ({
 			>
 				<div className="">
 					<Button
-						className={`w-full h-full rounded-none ${
-							className.includes('bg-') ? 'bg-transparent' : ''
-						}`}
-						type={'white'}
+						className={`w-full h-full rounded-none bg-transparent-gray text-black`}
 						onClick={() => {
 							Controller('minus', 1);
 						}}
@@ -56,9 +59,7 @@ const Qty = ({
 				</div>
 				<div className="">
 					<input
-						className={`max-w-full py-2 outline-none text-center ${
-							className.includes('bg-') ? 'bg-transparent' : ''
-						}`}
+						className={`max-w-full py-2 outline-none text-center bg-transparent-gray`}
 						type="number"
 						value={qty}
 						readOnly
@@ -66,10 +67,7 @@ const Qty = ({
 				</div>
 				<div className="">
 					<Button
-						className={`w-full h-full rounded-none ${
-							className.includes('bg-') ? 'bg-tranparent' : ''
-						}`}
-						type={'white'}
+						className={`w-full h-full rounded-none bg-transparent-gray text-black`}
 						onClick={() => {
 							Controller('plus', 1);
 						}}

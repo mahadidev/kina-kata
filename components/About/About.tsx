@@ -2,8 +2,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import aboutAnimation from '../../assets/lotties/about_animation.json';
-import { type RootState } from '../../redux/store';
-import { Breadcrumb } from '../index';
+import { type RootState } from '../../redux';
 
 const About = () => {
 	const navigationHeight = useSelector(

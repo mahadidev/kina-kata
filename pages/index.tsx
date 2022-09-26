@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Banner, BestSellingProduct, Products, PromoCard } from '../components';
-import { type RootState } from '../redux/store';
-import { FetchData } from './api';
+import { type RootState } from '../redux';
 
 const HomePage = () => {
 	const count = useSelector((state: RootState) => state.basic.navigationHeight);

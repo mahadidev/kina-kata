@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { type RootState } from '../../redux/store';
+import { type RootState } from '../../redux';
 import { Icons, Logo, Menu, NavButtons } from '../index';
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
 			</span>
 			<motion.div
 				animate={{
-					width: isSidebar ? '300px' : '',
+					width: isSidebar ? '90%' : '',
 
 					transition: {
 						duration: 0.1,
@@ -43,8 +43,8 @@ const Navbar = () => {
 					className="sm:hidden"
 					style={{ height: `${navigationHeight}px` }}
 				></div>
-				<Menu className="block sm:flex border border-b-0 border-r-0 border-l-0 sm:border-0" />
-				<NavButtons className="ml-3 sm:ml-0 mt-3 sm:mt-0 justify-start sm:justify-end" />
+				<Menu />
+				<NavButtons />
 			</motion.div>
 		</div>
 	);

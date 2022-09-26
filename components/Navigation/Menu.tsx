@@ -1,59 +1,42 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FetchData } from '../../pages/api';
 
-const Menu = ({
-	className,
-	itemClass,
-}: {
-	className?: string;
-	itemClass?: string;
-}) => {
-	const [menus, setMenus] = useState([
-		{
-			title: 'Home',
-			href: '/',
-		},
-		{
-			title: 'Shop',
-			href: '/shop',
-		},
-		{
-			title: 'About',
-			href: '/about',
-		},
-		{
-			title: 'Contact',
-			href: '/contact',
-		},
-	]);
-
+const Menu = () => {
+	const [menus, setMenus] = useState(null);
 	const router = useRouter();
+
+	const setMenuData = (data: any) => {
+		setMenus(data);
+	};
+
+	useEffect(() => {
+		FetchData({
+			query: `*[_type == "menus" && name == "navigationMenu"][0]`,
+			callBack: setMenuData,
+		});
+	}, []);
+
 	return (
 		<div
-			className={`w-full ${
-				className?.includes('block') || className?.includes('hidden')
-					? ''
-					: 'flex'
-			} ${
-				className?.includes('justify-') ? '' : 'justify-center'
-			} ${className}`}
+			className={`w-full block sm:flex sm:justify-center border border-b-0 border-r-0 border-l-0 sm:border-0`}
 		>
-			{menus?.map((item, i) => (
-				<Link href={item.href} key={i}>
-					<p
-						className={`transition ease-in cursor-pointer hover:bg-primary  sm:hover:bg-transparent hover:text-white focus:text-white active:text-white  sm:hover:text-primary sm:focus:text-primary sm:active:text-primary ${itemClass} ${
-							router.pathname == item.href
-								? 'bg-primary sm:bg-transparent text-white sm:text-primary'
-								: 'text-black'
-						} ${itemClass?.includes('py') ? '' : 'py-3 sm:py-7'} ${
-							itemClass?.includes('px') ? '' : 'px-4'
-						} `}
-					>
-						{item.title}
-					</p>
-				</Link>
-			))}
+			{menus?.item?.map((item: any, i: number) => {
+				return (
+					<Link href={item.url} key={i}>
+						<p
+							className={`hover:bg-transparent-gray sm:hover:bg-transparent sm:hover:text-primary cursor-pointer px-4 py-3 sm:py-0 ${
+								router.pathname == item.url
+									? 'bg-transparent-gray sm:bg-transparent sm:text-primary'
+									: 'text-black-light'
+							}`}
+						>
+							{item.title}
+						</p>
+					</Link>
+				);
+			})}
 		</div>
 	);
 };

@@ -2,9 +2,8 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import contactAnimation from '../../assets/lotties/about_animation.json';
-import { type RootState } from '../../redux/store';
-import Button from '../Button/Button';
-import { Breadcrumb } from '../index';
+import { type RootState } from '../../redux';
+import { Button } from '../index';
 
 const Contact = () => {
 	const navigationHeight = useSelector(

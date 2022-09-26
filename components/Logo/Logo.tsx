@@ -10,19 +10,8 @@ const Logo = ({
 }) => {
 	return (
 		<Link href={'/'}>
-			<h1
-				className={`${
-					className?.includes('text-') ? '' : 'text-black'
-				} text-3xl cursor-pointer`}
-			>
-				Kina{' '}
-				<span
-					className={`${
-						childClassName?.includes('text-') ? '' : 'text-primary'
-					}`}
-				>
-					Kata
-				</span>
+			<h1 className={`'text-black text-3xl cursor-pointer font-semibold`}>
+				Kina <span className={`text-primary`}>Kata</span>
 			</h1>
 		</Link>
 	);

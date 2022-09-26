@@ -13,7 +13,7 @@ module.exports = {
 			},
 			backgroundColor: {
 				primary: {
-					light: '#5c59ff',
+					light: '#7775fb',
 					DEFAULT: '#5c59ff',
 					dark: '#1f2538',
 				},
@@ -28,13 +28,13 @@ module.exports = {
 					dark: '#0f172a',
 				},
 				transparent: {
-					gray: '#00000005',
+					gray: '#00000008',
 					DEFAULT: '#0000',
 				},
 			},
 			colors: {
 				primary: {
-					light: '#5c59ff',
+					light: '#7775fb',
 					DEFAULT: '#5c59ff',
 					dark: '#1f2538',
 				},
@@ -65,7 +65,7 @@ module.exports = {
 					light: '#e08fc8',
 				},
 				transparent: {
-					gray: '#00000005',
+					gray: '#00000008',
 					DEFAULT: '#0000',
 				},
 			},

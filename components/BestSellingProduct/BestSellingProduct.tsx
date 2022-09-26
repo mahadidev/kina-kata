@@ -20,7 +20,9 @@ const BestSellingProduct = () => {
 	return (
 		<div className="py-8">
 			<div className="container m-auto">
-				<h1 className="text-3xl text-black">Best Selling Product.</h1>
+				<h1 className="text-3xl text-black font-semibold">
+					Best Selling Product.
+				</h1>
 				<Swiper
 					breakpoints={{
 						350: {

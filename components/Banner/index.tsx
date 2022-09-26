@@ -19,11 +19,7 @@ const Banner = ({ name }: { name: string }) => {
 				btnLabel,
 				btnIcon,
 				btnLink,
-				bannerType,
-				bgColor,
-				textColor,
-				textColor2,
-				"btnType": *[_type == "button" && ^.btnType._ref == _id][0]
+				bannerType
 			 }`,
 			callBack: getBannerData,
 		});

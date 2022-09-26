@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { BestSellingProduct, Test } from '../../components';
-import { type RootState } from '../../redux/store';
+import { BestSellingProduct, ViewProduct } from '../../components';
+import { type RootState } from '../../redux';
 
 const ProductPage = () => {
 	const router = useRouter();
@@ -11,7 +11,7 @@ const ProductPage = () => {
 
 	return (
 		<div style={{ marginTop: count + 'px' }}>
-			<Test title={title} />
+			<ViewProduct title={title} />
 			<BestSellingProduct />
 		</div>
 	);
