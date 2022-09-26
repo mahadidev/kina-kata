@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Rating } from 'react-simple-star-rating';
-import { cartProductAdd, cartProductRemove } from '../../redux/CartSlice';
 import { ImageUrl } from '../../utils/';
 import { Button, Icons } from '../index';
 
@@ -36,16 +34,6 @@ const Product = ({
 		return name && name.length > maxLength
 			? name.slice(0, maxLength).split(' ').slice(0, -1).join(' ')
 			: name;
-	};
-	const dispatch = useDispatch();
-
-	const addCartHandle = () => {
-		setIsCart((result: boolean) => !result);
-		dispatch(cartProductAdd(product));
-	};
-	const addWishlistHandle = () => {
-		setIsWishlist((result: boolean) => !result);
-		dispatch(cartProductRemove(product));
 	};
 
 	useEffect(() => {
