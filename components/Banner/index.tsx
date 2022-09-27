@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FetchData } from '../../pages/api';
-import { PromoBanner, StandardBanner } from '../index';
+import { BannerLoader, PromoBanner, StandardBanner } from '../index';
 
 const Banner = ({ name }: { name: string }) => {
 	const [bannerData, setBannerData] = useState(null);
@@ -36,7 +36,17 @@ const Banner = ({ name }: { name: string }) => {
 		}
 	});
 
-	return <>{bannerOutput}</>;
+	return (
+		<>
+			{bannerOutput && name === 'heroBanner' && (
+				<BannerLoader type={'standard'} />
+			)}
+			{!bannerOutput && name === 'homePromoBanner' && (
+				<BannerLoader type={'promo'} />
+			)}
+			{bannerOutput && bannerOutput}
+		</>
+	);
 };
 
 export default Banner;

@@ -1,5 +1,6 @@
 export { default as About } from './About/About';
 export { default as Banner } from './Banner';
+export { default as BannerLoader } from './Banner/BannerLoader';
 export { default as PromoBanner } from './Banner/PromoBanner';
 export { default as StandardBanner } from './Banner/StandardBanner';
 export { default as BestSellingProduct } from './BestSellingProduct/BestSellingProduct';
