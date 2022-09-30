@@ -38,7 +38,7 @@ const Banner = ({ name }: { name: string }) => {
 
 	return (
 		<>
-			{bannerOutput && name === 'heroBanner' && (
+			{!bannerOutput && name === 'heroBanner' && (
 				<BannerLoader type={'standard'} />
 			)}
 			{!bannerOutput && name === 'homePromoBanner' && (
