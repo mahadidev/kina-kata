@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FetchData } from '../../pages/api';
-import { BannerLoader, PromoBanner, StandardBanner } from '../index';
+import { PromoBanner, StandardBanner } from '../index';
+import Loader from './Loader';
 
 const Banner = ({ name }: { name: string }) => {
 	const [bannerData, setBannerData] = useState(null);
@@ -38,12 +39,8 @@ const Banner = ({ name }: { name: string }) => {
 
 	return (
 		<>
-			{!bannerOutput && name === 'heroBanner' && (
-				<BannerLoader type={'standard'} />
-			)}
-			{!bannerOutput && name === 'homePromoBanner' && (
-				<BannerLoader type={'promo'} />
-			)}
+			{!bannerOutput && name === 'heroBanner' && <Loader type={'standard'} />}
+			{!bannerOutput && name === 'homePromoBanner' && <Loader type={'promo'} />}
 			{bannerOutput && bannerOutput}
 		</>
 	);

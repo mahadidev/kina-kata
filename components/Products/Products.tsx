@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FetchData } from '../../pages/api';
 import { Button, Product } from '../index';
+import Loader from './Loader';
 
 const Products = ({
 	count,
@@ -58,22 +59,28 @@ const Products = ({
 	return (
 		<div className="py-8 pb-16">
 			<div className="container m-auto">
-				<h1 className="text-3xl text-black">All Product.</h1>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center sm:justify-start gap-6 pt-4">
-					{productsData?.map((product: any, i: number) => {
-						return <Product key={i} product={product} isMinimal={isMinimal} />;
-					})}
-				</div>
-
-				{productCount !== null && (
-					<Button
-						onClick={loadMoreHandle}
-						className="bg-primary-dark mt-8 mx-auto disabled:bg-black-light"
-						disabled={isLoading}
-					>
-						{isLoading ? 'loading...' : 'Load More'}
-					</Button>
+				{productsData && (
+					<>
+						<h1 className="text-3xl text-black">All Product.</h1>
+						<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center sm:justify-start gap-6 pt-4">
+							{productsData?.map((product: any, i: number) => {
+								return (
+									<Product key={i} product={product} isMinimal={isMinimal} />
+								);
+							})}
+						</div>
+						{productCount !== null && (
+							<Button
+								onClick={loadMoreHandle}
+								className="bg-primary-dark mt-8 mx-auto disabled:bg-black-light"
+								disabled={isLoading}
+							>
+								{isLoading ? 'loading...' : 'Load More'}
+							</Button>
+						)}
+					</>
 				)}
+				{!productsData && <Loader rows={1} />}
 			</div>
 		</div>
 	);
