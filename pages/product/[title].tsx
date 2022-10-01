@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import TrackVisibility from 'react-on-screen';
 import { useSelector } from 'react-redux';
 import { BestSellingProduct, ViewProduct } from '../../components';
 import { type RootState } from '../../redux';
@@ -11,8 +12,24 @@ const ProductPage = () => {
 
 	return (
 		<div style={{ marginTop: count + 'px' }}>
-			<ViewProduct title={title} />
-			<BestSellingProduct />
+			<TrackVisibility>
+				{({ isVisible }) =>
+					isVisible ? (
+						<ViewProduct title={title} isVisible={true} />
+					) : (
+						<ViewProduct title={title} isVisible={false} />
+					)
+				}
+			</TrackVisibility>
+			<TrackVisibility>
+				{({ isVisible }) =>
+					isVisible ? (
+						<BestSellingProduct isVisible={true} />
+					) : (
+						<BestSellingProduct isVisible={false} />
+					)
+				}
+			</TrackVisibility>
 		</div>
 	);
 };

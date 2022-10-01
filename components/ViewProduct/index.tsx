@@ -7,8 +7,9 @@ import { FetchData } from '../../pages/api';
 import { addCartItems, RootState } from '../../redux';
 import { ImageUrl } from '../../utils';
 import { Button, Qty } from '../index';
+import Loader from './Loader';
 
-const ViewProduct = ({ title }) => {
+const ViewProduct = ({ isVisible, title }, { isVisible: any }) => {
 	const [product, setProduct] = useState(null);
 	const [qtyCount, setQtyCount] = useState(1);
 	const [price, setPrice] = useState(0);
@@ -48,7 +49,7 @@ const ViewProduct = ({ title }) => {
 
 	useEffect(() => {
 		// fetch data
-		if (title) {
+		if (title && isVisible) {
 			FetchData({
 				query: `*[_type == "product" && name == '${title}']{
 					_id,
@@ -67,7 +68,7 @@ const ViewProduct = ({ title }) => {
 			});
 		}
 		setQtyCount(1);
-	}, [title]);
+	}, [isVisible, title]);
 
 	return (
 		<>
@@ -136,6 +137,7 @@ const ViewProduct = ({ title }) => {
 					</div>
 				</div>
 			)}
+			{!product && <Loader />}
 		</>
 	);
 };
