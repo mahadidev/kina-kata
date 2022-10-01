@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux';
 import { ImageUrl } from '../../utils';
 import Button from '../Button';
-import { BannerLoader, Icons } from '../index';
+import { Icons } from '../index';
 
 const StandardBanner = ({
 	image,
