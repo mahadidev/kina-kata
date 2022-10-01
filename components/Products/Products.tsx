@@ -4,11 +4,15 @@ import { Button, Product } from '../index';
 import Loader from './Loader';
 
 const Products = ({
+	isVisible,
 	count,
 	isMinimal,
+	loaderCount,
 }: {
+	isVisible: any;
 	count: number;
 	isMinimal?: boolean;
+	loaderCount?: number;
 }) => {
 	const [productCount, setProductCount] = useState(0);
 	const [perLoading, setPerLoading] = useState(count);
@@ -53,8 +57,10 @@ const Products = ({
 	};
 
 	useEffect(() => {
-		callProduct(productCount);
-	}, []);
+		if (isVisible) {
+			callProduct(productCount);
+		}
+	}, [isVisible]);
 
 	return (
 		<div className="py-8 pb-16">
@@ -80,7 +86,7 @@ const Products = ({
 						)}
 					</>
 				)}
-				{!productsData && <Loader rows={1} />}
+				{!productsData && <Loader rows={loaderCount} />}
 			</div>
 		</div>
 	);

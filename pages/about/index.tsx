@@ -1,4 +1,5 @@
 import React from 'react';
+import TrackVisibility from 'react-on-screen';
 import { useSelector } from 'react-redux';
 import { About } from '../../components';
 import { type RootState } from '../../redux';
@@ -15,7 +16,11 @@ const AboutPage = () => {
 				marginTop: navigationHeight + 'px',
 			}}
 		>
-			<About />
+			<TrackVisibility>
+				{({ isVisible }) =>
+					isVisible ? <About isVisible={true} /> : <About isVisible={false} />
+				}
+			</TrackVisibility>
 		</div>
 	);
 };

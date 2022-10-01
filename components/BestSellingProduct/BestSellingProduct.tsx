@@ -4,19 +4,21 @@ import { Product } from '../index';
 import { FetchData } from './../../pages/api';
 import Loader from './Loader';
 
-const BestSellingProduct = () => {
+const BestSellingProduct = ({ isVisible }, { isVisible: any }) => {
 	const [products, setProducts] = useState(null);
 	const getData = (data: any) => {
 		setProducts(data);
 	};
 
 	useEffect(() => {
-		// fetch data
-		FetchData({
-			query: `*[_type == "product"] | order(sold desc) [0...7]`,
-			callBack: getData,
-		});
-	}, []);
+		if (isVisible) {
+			// fetch data
+			FetchData({
+				query: `*[_type == "product"] | order(sold desc) [0...7]`,
+				callBack: getData,
+			});
+		}
+	}, [isVisible]);
 
 	return (
 		<div className="py-8">

@@ -3,28 +3,30 @@ import { FetchData } from '../../pages/api';
 import { PromoBanner, StandardBanner } from '../index';
 import Loader from './Loader';
 
-const Banner = ({ name }: { name: string }) => {
+const Banner = ({ isVisible, name }: { isVisible: any; name: string }) => {
 	const [bannerData, setBannerData] = useState(null);
 	const getBannerData = (data: any) => {
 		setBannerData(data);
 	};
 
 	useEffect(() => {
-		FetchData({
-			query: `*[_type == "banner"]{
-				name,
-				image,
-				title,
-				desc,
-				details,
-				btnLabel,
-				btnIcon,
-				btnLink,
-				bannerType
-			 }`,
-			callBack: getBannerData,
-		});
-	}, []);
+		if (isVisible) {
+			FetchData({
+				query: `*[_type == "banner"]{
+					name,
+					image,
+					title,
+					desc,
+					details,
+					btnLabel,
+					btnIcon,
+					btnLink,
+					bannerType
+				 }`,
+				callBack: getBannerData,
+			});
+		}
+	}, [isVisible]);
 
 	const bannerOutput = bannerData?.map((item: any, i: number) => {
 		if (item.name === name) {

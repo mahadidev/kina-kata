@@ -7,7 +7,7 @@ import { ImageUrl } from '../../utils';
 import { Button, Icons } from '../index';
 import Loader from './Loader';
 
-const PromoCard = ({ name }: { name: string }) => {
+const PromoCard = ({ isVisible, name }: { isVisible: any; name: string }) => {
 	const [swiper, setSwiper] = useState(null);
 	const slideRef = useRef(null);
 
@@ -17,8 +17,9 @@ const PromoCard = ({ name }: { name: string }) => {
 	};
 
 	useEffect(() => {
-		FetchData({
-			query: `*[_type == "cardBanner" && name == "homePromoBanner"][0]{
+		if (isVisible) {
+			FetchData({
+				query: `*[_type == "cardBanner" && name == "homePromoBanner"][0]{
         name,
         type,
         image,
@@ -35,9 +36,10 @@ const PromoCard = ({ name }: { name: string }) => {
         },
         "btnType": *[_type == "button" && _id == ^.btnType._ref][0]
       }`,
-			callBack: getData,
-		});
-	}, []);
+				callBack: getData,
+			});
+		}
+	}, [isVisible]);
 
 	const cardBg = [
 		'bg-primary-dark',
