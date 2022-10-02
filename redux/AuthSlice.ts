@@ -13,12 +13,14 @@ export const AuthSlice = createSlice({
 	initialState,
 	reducers: {
 		authLogin: (state, action: any) => {
-			state.user = {
-				_id: action.payload._id,
-				name: action.payload.name,
-				email: action.payload.email,
-				image: action.payload.image,
-			};
+			state.user = action.payload
+				? {
+						_id: action.payload._id,
+						name: action.payload.name,
+						email: action.payload.email,
+						image: action.payload.image,
+				  }
+				: null;
 		},
 	},
 });

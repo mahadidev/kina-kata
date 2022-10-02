@@ -1,9 +1,12 @@
+import { GoogleLogin } from '@react-oauth/google';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setCartSidebar } from '../../redux';
+import { FetchData } from '../../pages/api';
+import { authLogin, RootState, setCartSidebar } from '../../redux';
+import { createOrGetUser } from '../../utils/User';
 import { Button, Icons } from '../index';
 
-const NavButtons = () => {
+export const CartButton = ({ className }: { className?: string }) => {
 	const { totalProduct } = useSelector((state: RootState) => state.cart);
 	const dispatch = useDispatch();
 	const showCartSidebar = () => {
@@ -11,15 +14,7 @@ const NavButtons = () => {
 	};
 
 	return (
-		<div
-			className={`w-full flex ml-3 sm:ml-0 mt-3 sm:mt-0 justify-start sm:justify-end`}
-		>
-			<Button className="mr-2" type="primary" href={'/login'}>
-				<span className="text-lg mr-2  flex items-center">
-					{Icons.loginIcon}
-				</span>
-				<span className="block">Login</span>
-			</Button>
+		<>
 			<Button
 				className="block disabled:bg-primary-light"
 				onClick={showCartSidebar}
@@ -38,8 +33,85 @@ const NavButtons = () => {
 					</div>
 				)}
 			</Button>
-		</div>
+		</>
 	);
 };
 
-export default NavButtons;
+export const AuthButton = ({
+	className,
+	googleBtnProps,
+}: {
+	className?: string;
+	googleBtnProps?: any;
+}) => {
+	const dispatch = useDispatch();
+	// login
+	const authUser = useSelector((state: RootState) => state.auth?.user);
+	const onLogin = (user: any) => {
+		FetchData({
+			sub: 'addUser',
+			query: user,
+			callBack: (data: any) => {
+				console.log(data);
+				dispatch(authLogin(user));
+			},
+		});
+	};
+
+	// log out
+	const logOut = () => {
+		dispatch(authLogin(null));
+	};
+
+	return (
+		<>
+			{!authUser && (
+				<div className={`${className} ml-3`}>
+					<GoogleLogin
+						onSuccess={(response) => {
+							createOrGetUser(response, onLogin);
+						}}
+						onError={() => {
+							console.log('Login Failed');
+						}}
+						theme="outline"
+						text="signin"
+						shape="square"
+						{...googleBtnProps}
+					/>
+				</div>
+			)}
+
+			{authUser && (
+				<Button
+					className={`${className} relative p-0 bg-none ml-3`}
+					type="primary"
+					dropdown={
+						<div className="w-40 absolute top-full left-0 bg-white drop-shadow-2xl rounded-md overflow-hidden mt-3">
+							<Button className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start">
+								<span className="mr-2 flex items-center">{Icons.shopIcon}</span>
+								Order List
+							</Button>
+							<Button
+								className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
+								onClick={logOut}
+							>
+								<span className="mr-2 flex items-center">
+									{Icons.logOutIcon}
+								</span>
+								Log Out
+							</Button>
+						</div>
+					}
+				>
+					<img
+						className="w-10 h-10 rounded-full overflow-hidden"
+						src={authUser?.image}
+						alt={'User Profile'}
+						title={authUser?.name}
+					/>
+				</Button>
+			)}
+		</>
+	);
+};

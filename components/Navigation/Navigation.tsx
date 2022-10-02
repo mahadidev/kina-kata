@@ -13,7 +13,7 @@ const Navigation = () => {
 
 	return (
 		<div
-			className="w-[100%] fixed top-0 left-0 bg-white shadow-sm z-40 py-4"
+			className="w-[100%] fixed top-0 left-0 bg-white shadow-sm z-40 py-3"
 			ref={navbarRef}
 		>
 			<div className="container m-auto">

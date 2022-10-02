@@ -8,6 +8,7 @@ const Button = ({
 	href,
 	onClick = () => {},
 	disabled,
+	dropdown,
 }: {
 	children: any;
 	type?: any;
@@ -15,11 +16,10 @@ const Button = ({
 	href?: string;
 	onClick?: any;
 	disabled?: boolean;
+	dropdown?: any;
 }) => {
 	const btnClass = `${
-		className?.includes('bg-') && !className?.includes(':bg-')
-			? ''
-			: 'bg-primary hover:bg-primary-light'
+		className?.includes('bg-') ? '' : 'bg-primary hover:bg-primary-light'
 	} ${className?.includes('text-') ? '' : 'text-white'} ${
 		className?.includes('rounded-') ? '' : 'rounded-md'
 	} ${className?.includes('text-') ? '' : 'text-md'} ${
@@ -34,19 +34,50 @@ const Button = ({
 			: 'text-center'
 	} transition-all disabled:cursor-not-allowed`;
 
+	// dropdown
+	const [isDropdown, setIsDropDown] = useState(false);
+
 	return (
 		<>
-			{href && (
+			{!dropdown && href && (
 				<Link href={href ? href : '#'}>
-					<button onClick={onClick} className={btnClass} disabled={disabled}>
+					<button
+						onClick={dropdown ? dropdown : onClick}
+						className={btnClass}
+						disabled={disabled}
+					>
 						{children}
 					</button>
 				</Link>
 			)}
 
-			{!href && (
-				<button className={btnClass} onClick={onClick} disabled={disabled}>
+			{!dropdown && !href && (
+				<button
+					className={btnClass}
+					onClick={
+						dropdown
+							? () => {
+									setIsDropDown((prev) => !prev);
+							  }
+							: onClick
+					}
+					disabled={disabled}
+				>
 					{children}
+				</button>
+			)}
+
+			{dropdown && (
+				<button
+					className={btnClass}
+					onClick={() => {
+						setIsDropDown((prev) => !prev);
+					}}
+					disabled={disabled}
+				>
+					{children}
+
+					{isDropdown && dropdown}
 				</button>
 			)}
 		</>

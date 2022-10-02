@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { type RootState } from '../../redux';
-import { Icons, Logo, Menu, NavButtons } from '../index';
+import { useDispatch, useSelector } from 'react-redux';
+import { authLogin, setCartSidebar, type RootState } from '../../redux';
+import { Button, Icons, Logo, Menu, NavButtons } from '../index';
+import { AuthButton, CartButton } from './NavButtons';
 
 const Navbar = () => {
 	const [isSidebar, setIsSidebar] = useState(false);
@@ -40,11 +41,28 @@ const Navbar = () => {
 				className="absolute sm:relative top-0 right-0 bg-white w-0 sm:w-full h-[100vh] sm:h-auto sm:bg-transparent sm:grid sm:grid-cols-2 sm:items-center sm:col-span-2 z-10 shadow-xl sm:shadow-none"
 			>
 				<div
-					className="sm:hidden"
+					className="flex items-center sm:hidden"
 					style={{ height: `${navigationHeight}px` }}
-				></div>
+				>
+					<AuthButton
+						googleBtnProps={{
+							type: 'icon',
+						}}
+					/>
+				</div>
 				<Menu />
-				<NavButtons />
+
+				<div
+					className={`w-full flex ml-3 sm:ml-0 mt-3 sm:mt-0 justify-start sm:justify-end`}
+				>
+					<CartButton />
+					<AuthButton
+						className="hidden sm:flex"
+						googleBtnProps={{
+							text: 'signin',
+						}}
+					/>
+				</div>
 			</motion.div>
 		</div>
 	);

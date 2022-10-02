@@ -1,12 +1,7 @@
 import emailjs from '@emailjs/browser';
-import { Player } from '@lottiefiles/react-lottie-player';
-import { GoogleLogin } from '@react-oauth/google';
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import contactAnimation from '../../assets/lotties/about_animation.json';
-import { FetchData } from '../../pages/api';
-import { authLogin, type RootState } from '../../redux';
-import { createOrGetUser } from '../../utils/User';
+import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { type RootState } from '../../redux';
 import { Button } from '../index';
 
 const Contact = () => {
@@ -43,17 +38,6 @@ const Contact = () => {
 			);
 	};
 
-	const dispatch = useDispatch();
-	const onLogin = (user: any) => {
-		FetchData({
-			sub: 'addUser',
-			query: user,
-			callBack: (data: any) => {
-				console.log(data);
-				dispatch(authLogin(user));
-			},
-		});
-	};
 	return (
 		<>
 			<div className="relative">
@@ -98,14 +82,6 @@ const Contact = () => {
 						<p className="text-green mt-2">{message}</p>
 					</div>
 				</div>
-				<GoogleLogin
-					onSuccess={(response) => {
-						createOrGetUser(response, onLogin);
-					}}
-					onError={() => {
-						console.log('Login Failed');
-					}}
-				/>
 			</div>
 		</>
 	);
