@@ -1,3 +1,4 @@
+export { authLogin } from './AuthSlice';
 export {
 	setBreadcrumbHeight,
 	setCartSidebar,

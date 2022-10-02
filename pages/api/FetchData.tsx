@@ -2,16 +2,19 @@ import axios from 'axios';
 import React from 'react';
 
 const FetchData = ({
+	sub = 'get',
 	query,
 	callBack,
 }: {
-	query: string;
+	sub?: 'get' | 'addUser';
+	query: any;
 	callBack: CallableFunction;
 }) => {
 	// api url
 	let url = process.env.NEXT_PUBLIC_BASE_URL + '/api/getData';
 	axios
 		.post(url, {
+			sub: sub,
 			query: query,
 		})
 		.then((response) => {

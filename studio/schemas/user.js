@@ -1,29 +1,22 @@
 export default {
-  name: "user",
-  title: "User",
-  type: "document",
-  fields: [
-    {
-      name: "userName",
-      title: "User Name",
-      type: "string"
-    },
-    {
-      name: "image",
-      title: "Image",
-      type: "image",
-      of: [{type: "image"}]
-    },
-    {
-      name: "order",
-      title: "Order",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: [{type: "product"}]
-        }
-      ]
-    }
-  ]
-}
+	name: 'user',
+	title: 'User',
+	type: 'document',
+	fields: [
+		{
+			name: 'name',
+			title: 'Name',
+			type: 'string',
+		},
+		{
+			name: 'email',
+			title: 'Email',
+			type: 'string',
+		},
+		{
+			name: 'image',
+			title: 'Image',
+			type: 'string',
+		},
+	],
+};

@@ -1,8 +1,12 @@
+import emailjs from '@emailjs/browser';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { GoogleLogin } from '@react-oauth/google';
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import contactAnimation from '../../assets/lotties/about_animation.json';
-import { type RootState } from '../../redux';
+import { FetchData } from '../../pages/api';
+import { authLogin, type RootState } from '../../redux';
+import { createOrGetUser } from '../../utils/User';
 import { Button } from '../index';
 
 const Contact = () => {
@@ -14,6 +18,42 @@ const Contact = () => {
 		(state: RootState) => state.basic.breadcrumbHeight
 	);
 
+	const [isLoading, setIsLoading] = useState(null);
+	const [message, setMessage] = useState(null);
+	const formRef = useRef(null);
+	const sendMail = (e: any) => {
+		e.preventDefault();
+		setIsLoading(true);
+
+		emailjs
+			.sendForm(
+				'service_zy2h795',
+				'template_odlu761',
+				formRef.current,
+				'qm7CspCnwDE-z1cGG'
+			)
+			.then(
+				(result) => {
+					setIsLoading(false);
+					setMessage('mail has been sent successfully.');
+				},
+				(error) => {
+					setMessage('there is some problem. please try again later.');
+				}
+			);
+	};
+
+	const dispatch = useDispatch();
+	const onLogin = (user: any) => {
+		FetchData({
+			sub: 'addUser',
+			query: user,
+			callBack: (data: any) => {
+				console.log(data);
+				dispatch(authLogin(user));
+			},
+		});
+	};
 	return (
 		<>
 			<div className="relative">
@@ -32,7 +72,7 @@ const Contact = () => {
 							industry. Lorem Ipsum has been the industrys standard dummy text
 							ever since the 1500s.
 						</p>
-						<div className="pt-4">
+						<form ref={formRef} onSubmit={sendMail} className="pt-4">
 							<input
 								className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary"
 								name="name"
@@ -40,25 +80,32 @@ const Contact = () => {
 							/>
 							<input
 								className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary"
-								name="email"
+								name="mail"
 								placeholder="Email adress"
-							/>
-							<input
-								className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary"
-								name="name"
-								placeholder="Subject"
 							/>
 
 							<textarea
 								className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary"
+								name="message"
 								rows={6}
 								placeholder="Message"
 							></textarea>
 
-							<Button className="w-100">Send</Button>
-						</div>
+							<Button className="w-100" disabled={isLoading}>
+								{isLoading ? 'loading..' : 'Submit'}
+							</Button>
+						</form>
+						<p className="text-green mt-2">{message}</p>
 					</div>
 				</div>
+				<GoogleLogin
+					onSuccess={(response) => {
+						createOrGetUser(response, onLogin);
+					}}
+					onError={() => {
+						console.log('Login Failed');
+					}}
+				/>
 			</div>
 		</>
 	);

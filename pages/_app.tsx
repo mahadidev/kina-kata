@@ -1,3 +1,4 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
@@ -7,14 +8,18 @@ import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
-		<Provider store={store}>
-			<Head>
-				<title>Online Shopping || Kina Kata</title>
-			</Head>
-			<Navigation />
-			<Component {...pageProps} />
-			<Footer />
-		</Provider>
+		<GoogleOAuthProvider
+			clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOEKN}`}
+		>
+			<Provider store={store}>
+				<Head>
+					<title>Online Shopping || Kina Kata</title>
+				</Head>
+				<Navigation />
+				<Component {...pageProps} />
+				<Footer />
+			</Provider>
+		</GoogleOAuthProvider>
 	);
 };
 
