@@ -16,7 +16,7 @@ export const CartButton = ({ className }: { className?: string }) => {
 	return (
 		<>
 			<Button
-				className="block disabled:bg-primary-light"
+				className="block bg-primary disabled:bg-primary-light"
 				onClick={showCartSidebar}
 				disabled={totalProduct > 0 ? false : true}
 			>
