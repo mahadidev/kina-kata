@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNavigationHeight } from '../../redux';
-import { Cart, Navbar } from '../index';
+import { Cart } from '../index';
+import Navbar from './Navbar';
 
 const Navigation = () => {
 	const navbarRef = useRef(null);

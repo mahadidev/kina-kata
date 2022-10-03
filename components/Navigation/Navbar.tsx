@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authLogin, setCartSidebar, type RootState } from '../../redux';
-import { Button, Icons, Logo, Menu, NavButtons } from '../index';
+import { Button, Icons, Logo } from '../index';
+import Menu from './Menu';
 import { AuthButton, CartButton } from './NavButtons';
 
 const Navbar = () => {
