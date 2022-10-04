@@ -1,11 +1,23 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Login } from '../../components';
+import { type RootState } from '../../redux';
 
-const index = () => {
-  return (
-    <div className="h-[100vh] flex items-center justify-center">
-      <h1 className="title-font text-3xl">Login Page</h1>
-    </div>
-  );
+const Template = () => {
+	const navigationHeight = useSelector(
+		(state: RootState) => state.basic.navigationHeight
+	);
+
+	return (
+		<div
+			className="bg-white"
+			style={{
+				marginTop: navigationHeight + 'px',
+			}}
+		>
+			<Login />
+		</div>
+	);
 };
 
-export default index;
+export default Template;

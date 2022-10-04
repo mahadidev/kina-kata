@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Contact } from '../../components';
 import { type RootState } from '../../redux';
 
 const Template = () => {
@@ -14,9 +13,7 @@ const Template = () => {
 			style={{
 				marginTop: navigationHeight + 'px',
 			}}
-		>
-			<Contact />
-		</div>
+		></div>
 	);
 };
 

@@ -8,6 +8,7 @@ export default async function handler(
 	// check product count
 	const sub = req.body.sub;
 	const query = req.body.query;
+	const source = req.body.source;
 
 	switch (sub) {
 		case 'get':
@@ -15,9 +16,19 @@ export default async function handler(
 			res.status(200).json(data);
 			break;
 		case 'addUser':
-			Client.createIfNotExists(query).then(() =>
-				res.status(200).json('login Success')
-			);
+			if (source === 'google') {
+				Client.createIfNotExists(query)
+					.then(() => res.status(200).json('login Success'))
+					.catch((error) => {
+						console.log(error);
+					});
+			} else if (source === 'custom') {
+				Client.create(query)
+					.then(() => res.status(200).json(query))
+					.catch((error) => {
+						console.log(error);
+					});
+			}
 			break;
 		default:
 			break;

@@ -4,10 +4,12 @@ import React from 'react';
 const FetchData = ({
 	sub = 'get',
 	query,
+	source,
 	callBack,
 }: {
 	sub?: 'get' | 'addUser';
 	query: any;
+	source?: any;
 	callBack: CallableFunction;
 }) => {
 	// api url
@@ -16,6 +18,7 @@ const FetchData = ({
 		.post(url, {
 			sub: sub,
 			query: query,
+			source: source,
 		})
 		.then((response) => {
 			if (callBack) {

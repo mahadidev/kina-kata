@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface CounterState {
-	user: any;
+	user: {
+		_id: string;
+		name: string;
+		email: string;
+		password?: string;
+		image: string;
+	};
 }
 
 const initialState: CounterState = {

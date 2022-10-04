@@ -14,6 +14,11 @@ export default {
 			type: 'string',
 		},
 		{
+			name: 'password',
+			title: 'Passowrd',
+			type: 'string',
+		},
+		{
 			name: 'image',
 			title: 'Image',
 			type: 'string',

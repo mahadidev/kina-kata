@@ -1,9 +1,7 @@
-import { GoogleLogin } from '@react-oauth/google';
-import React from 'react';
+import { googleLogout } from '@react-oauth/google';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchData } from '../../pages/api';
 import { authLogin, RootState, setCartSidebar } from '../../redux';
-import { createOrGetUser } from '../../utils/User';
 import { Button, Icons } from '../index';
 
 export const CartButton = ({ className }: { className?: string }) => {
@@ -16,7 +14,7 @@ export const CartButton = ({ className }: { className?: string }) => {
 	return (
 		<>
 			<Button
-				className="block bg-primary disabled:bg-primary-light"
+				className="bg-none border border-black-light text-black-light disabled:bg-primary-light"
 				onClick={showCartSidebar}
 				disabled={totalProduct > 0 ? false : true}
 			>
@@ -28,7 +26,7 @@ export const CartButton = ({ className }: { className?: string }) => {
 				</div>
 
 				{totalProduct > 0 && (
-					<div className="bg-white text-black-light w-6 h-6 text-sm absolute -top-2 -right-2 flex items-center justify-center rounded-full shadow-2xl">
+					<div className="bg-black-light text-white-light w-6 h-6 text-sm absolute -top-2 -right-2 flex items-center justify-center rounded-full drop-shadow-2xl">
 						{totalProduct}
 					</div>
 				)}
@@ -37,54 +35,23 @@ export const CartButton = ({ className }: { className?: string }) => {
 	);
 };
 
-export const AuthButton = ({
-	className,
-	googleBtnProps,
-}: {
-	className?: string;
-	googleBtnProps?: any;
-}) => {
+export const AuthButton = ({ className }: { className?: string }) => {
 	const dispatch = useDispatch();
+
 	// login
 	const authUser = useSelector((state: RootState) => state.auth?.user);
-	const onLogin = (user: any) => {
-		FetchData({
-			sub: 'addUser',
-			query: user,
-			callBack: (data: any) => {
-				console.log(data);
-				dispatch(authLogin(user));
-			},
-		});
-	};
 
 	// log out
 	const logOut = () => {
 		dispatch(authLogin(null));
+		googleLogout();
 	};
 
 	return (
 		<>
-			{!authUser && (
-				<div className={`${className} ml-3`}>
-					<GoogleLogin
-						onSuccess={(response) => {
-							createOrGetUser(response, onLogin);
-						}}
-						onError={() => {
-							console.log('Login Failed');
-						}}
-						theme="outline"
-						text="signin"
-						shape="square"
-						{...googleBtnProps}
-					/>
-				</div>
-			)}
-
 			{authUser && (
 				<Button
-					className={`${className} relative p-0 bg-none ml-3`}
+					className={`${className} relative p-0 bg-none ml-4`}
 					type="primary"
 					dropdown={
 						<div className="w-40 absolute top-full left-0 bg-white drop-shadow-2xl rounded-md overflow-hidden mt-3">
@@ -110,6 +77,14 @@ export const AuthButton = ({
 						alt={'User Profile'}
 						title={authUser?.name}
 					/>
+				</Button>
+			)}
+			{!authUser && (
+				<Button
+					className="bg-none border border-primary text-primary ml-3"
+					href="/login"
+				>
+					<span className="pr-2 flex items-center">{Icons.loginIcon}</span>Login
 				</Button>
 			)}
 		</>

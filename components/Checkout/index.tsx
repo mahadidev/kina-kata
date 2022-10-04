@@ -62,15 +62,13 @@ const Checkout = ({ isVisible }: { isVisible: any }) => {
 										<div className=" text-black-light font-semibold">Price</div>
 									</div>
 									{cartItems?.map((item: any, i: number) => (
-										<>
-											<div className="grid grid-cols-5 py-2">
-												<div className="col-span-3 text-black-light">
-													{item.product.name}
-												</div>
-												<div className="text-black-light">{item.qty}</div>
-												<div className="text-black-dark">{item.price}</div>
+										<div className="grid grid-cols-5 py-2" key={i}>
+											<div className="col-span-3 text-black-light">
+												{item.product.name}
 											</div>
-										</>
+											<div className="text-black-light">{item.qty}</div>
+											<div className="text-black-dark">{item.price}</div>
+										</div>
 									))}
 								</div>
 							</div>
@@ -83,17 +81,20 @@ const Checkout = ({ isVisible }: { isVisible: any }) => {
 									name="name"
 									placeholder="Name"
 									defaultValue={authLogin && authLogin.name}
+									required
 								/>
 								<input
 									className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
 									name="mail"
 									placeholder="Email adress"
 									defaultValue={authLogin && authLogin.email}
+									required
 								/>
 								<input
 									className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
 									name="address"
 									placeholder="shipping address"
+									required
 								/>
 
 								<select className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary form-select text-black-dark">

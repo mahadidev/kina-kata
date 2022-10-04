@@ -18,25 +18,21 @@ const Button = ({
 	disabled?: boolean;
 	dropdown?: any;
 }) => {
-	const btnClass = `${
-		className?.includes(' bg-') || className?.includes('"bg-')
-			? ''
-			: 'bg-primary hover:bg-primary-light'
-	} ${className?.includes('text-') ? '' : 'text-white'} ${
-		className?.includes('rounded-') ? '' : 'rounded-md'
-	} ${className?.includes('text-') ? '' : 'text-md'} ${
-		className?.includes('block') ? '' : 'flex'
-	} ${className?.includes('items-') ? '' : 'items-center'} ${
-		className?.includes('justify-') ? '' : 'justify-center'
-	} ${className?.includes('px-') || className?.includes('p-') ? '' : 'px-4'} ${
-		className?.includes('py-') || className?.includes('p-') ? '' : 'py-2'
-	} ${className?.includes('absolute') ? '' : 'relative'} ${
-		className?.includes('w-') ? '' : 'w-[max-content]'
-	} ${className} ${
+	const btnClass = `${className?.includes('bg-') ? '' : 'bg-primary'} ${
+		className?.includes('text-') ? '' : 'text-white'
+	} ${className?.includes('rounded-') ? '' : 'rounded-md'} ${
+		className?.includes('text-') ? '' : 'text-md'
+	} ${className?.includes('block') ? '' : 'flex'} ${
+		className?.includes('items-') ? '' : 'items-center'
+	} ${className?.includes('justify-') ? '' : 'justify-center'} ${
+		className?.includes('px-') || className?.includes('p-') ? '' : 'px-4'
+	} ${className?.includes('py-') || className?.includes('p-') ? '' : 'py-2'} ${
+		className?.includes('absolute') ? '' : 'relative'
+	} ${className?.includes('w-') ? '' : 'w-[max-content]'} ${
 		className?.includes('text-start') || className?.includes('text-end')
 			? ''
 			: 'text-center'
-	} transition-all disabled:cursor-not-allowed`;
+	}  ${className} transition-all disabled:cursor-not-allowed`;
 
 	// dropdown
 	const [isDropdown, setIsDropDown] = useState(false);

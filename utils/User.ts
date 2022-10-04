@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-export const createOrGetUser = async (response: any, onLogin: any) => {
+export const getUserInfo = async (response: any, callBack: any) => {
 	const decoded: { name: string; email: string; picture: string; sub: string } =
 		jwtDecode(response.credential);
 	const { name, email, picture, sub } = decoded;
@@ -13,5 +13,5 @@ export const createOrGetUser = async (response: any, onLogin: any) => {
 		image: picture,
 	};
 
-	onLogin(user);
+	callBack(user);
 };

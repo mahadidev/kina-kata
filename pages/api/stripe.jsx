@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-
+import { getImageUrl } from '../../utils';
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
@@ -13,19 +13,13 @@ export default async function handler(req, res) {
 				shipping_options: [{ shipping_rate: 'shr_1Lp8xxIwOuOgCFx3wq7GVBEM' }],
 				line_items: req.body.map((item) => {
 					const img = item.product.image[0].asset._ref;
-					const newImage = img
-						.replace(
-							'image-',
-							'https://cdn.sanity.io/images/6412z3fz/production/'
-						)
-						.replace('-jpg', '.jpg');
-					console.log(newImage);
+					const image = getImageUrl(item.product.image[0]);
 					return {
 						price_data: {
 							currency: 'usd',
 							product_data: {
 								name: item.product.name,
-								images: [newImage],
+								images: [image],
 							},
 							unit_amount: item.price,
 						},
