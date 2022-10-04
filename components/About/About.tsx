@@ -34,7 +34,7 @@ const About = ({ isVisible }: { isVisible: any }) => {
 			<div
 				className="container m-auto grid grid-cols-1 lg:grid-cols-2 items-center"
 				style={{
-					height: `calc(100vh - ${navigationHeight + breadcrumbHeight}px)`,
+					minHeight: `calc(100vh - ${navigationHeight + breadcrumbHeight}px)`,
 				}}
 			>
 				{aboutData && (

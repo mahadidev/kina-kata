@@ -8,6 +8,7 @@ export { default as Button } from './Button';
 export { default as Cart } from './Cart';
 export { default as Categories } from './Categories/Categories';
 export { default as Category } from './Category/Category';
+export { default as Checkout } from './Checkout';
 export { default as Contact } from './Contact/Contact';
 export { default as Footer } from './Footer/Footer';
 export { default as Icons } from './Icons/Icons';

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const Button = ({
 	children,
-	type = false,
+	type,
 	className,
 	href,
 	onClick = () => {},
@@ -19,7 +19,9 @@ const Button = ({
 	dropdown?: any;
 }) => {
 	const btnClass = `${
-		className?.includes('bg-') ? '' : 'bg-primary hover:bg-primary-light'
+		className?.includes(' bg-') || className?.includes('"bg-')
+			? ''
+			: 'bg-primary hover:bg-primary-light'
 	} ${className?.includes('text-') ? '' : 'text-white'} ${
 		className?.includes('rounded-') ? '' : 'rounded-md'
 	} ${className?.includes('text-') ? '' : 'text-md'} ${
@@ -28,7 +30,9 @@ const Button = ({
 		className?.includes('justify-') ? '' : 'justify-center'
 	} ${className?.includes('px-') || className?.includes('p-') ? '' : 'px-4'} ${
 		className?.includes('py-') || className?.includes('p-') ? '' : 'py-2'
-	} ${className?.includes('absolute') ? '' : 'relative'} ${className} ${
+	} ${className?.includes('absolute') ? '' : 'relative'} ${
+		className?.includes('w-') ? '' : 'w-[max-content]'
+	} ${className} ${
 		className?.includes('text-start') || className?.includes('text-end')
 			? ''
 			: 'text-center'
@@ -45,6 +49,7 @@ const Button = ({
 						onClick={dropdown ? dropdown : onClick}
 						className={btnClass}
 						disabled={disabled}
+						type={type && type}
 					>
 						{children}
 					</button>
@@ -61,6 +66,7 @@ const Button = ({
 							  }
 							: onClick
 					}
+					type={type && type}
 					disabled={disabled}
 				>
 					{children}
@@ -73,6 +79,7 @@ const Button = ({
 					onClick={() => {
 						setIsDropDown((prev) => !prev);
 					}}
+					type={type && type}
 					disabled={disabled}
 				>
 					{children}

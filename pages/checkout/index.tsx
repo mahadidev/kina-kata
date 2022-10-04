@@ -1,11 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Checkout } from '../../components';
+import { type RootState } from '../../redux';
 
-const CheckoutPage = () => {
+const CheckOutPage = () => {
+	const navigationHeight = useSelector(
+		(state: RootState) => state.basic.navigationHeight
+	);
+
 	return (
-		<div className="w-full h-[100vh] flex items-center justify-center">
-			CheckoutPage
+		<div
+			className="bg-white"
+			style={{
+				marginTop: navigationHeight + 'px',
+			}}
+		>
+			<Checkout />
 		</div>
 	);
 };
 
-export default CheckoutPage;
+export default CheckOutPage;

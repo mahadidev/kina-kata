@@ -1,13 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { setFooterHeight } from '../../redux';
 
 const Footer = () => {
 	const router = useRouter();
+	const footerRef = useRef(null);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(setFooterHeight(footerRef?.current?.offsetHeight));
+	});
 
 	return (
 		<>
-			<div className="bg-[#1f203e] relative border border-r-0 border-l-0 border-b-0">
+			<div
+				className="bg-[#1f203e] relative border border-r-0 border-l-0 border-b-0"
+				ref={footerRef}
+			>
 				<div className="mx-auto text-white pt-10">
 					<div className="text-center">
 						<h1 className="text-4xl font-semibold">Download our app </h1>

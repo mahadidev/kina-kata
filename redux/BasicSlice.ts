@@ -3,12 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface CounterState {
 	navigationHeight: number;
 	breadcrumbHeight: number;
+	footerHeight: number;
 	cartSidebar: boolean;
 }
 
 const initialState: CounterState = {
 	navigationHeight: 0,
 	breadcrumbHeight: 0,
+	footerHeight: 0,
 	cartSidebar: false,
 };
 
@@ -22,6 +24,9 @@ export const BasicSlice = createSlice({
 		setBreadcrumbHeight: (state, action) => {
 			state.breadcrumbHeight = action.payload;
 		},
+		setFooterHeight: (state, action) => {
+			state.footerHeight = action.payload;
+		},
 		setCartSidebar: (state, action) => {
 			state.cartSidebar = action.payload;
 		},
@@ -29,7 +34,11 @@ export const BasicSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setNavigationHeight, setBreadcrumbHeight, setCartSidebar } =
-	BasicSlice.actions;
+export const {
+	setNavigationHeight,
+	setBreadcrumbHeight,
+	setFooterHeight,
+	setCartSidebar,
+} = BasicSlice.actions;
 
 export default BasicSlice.reducer;
