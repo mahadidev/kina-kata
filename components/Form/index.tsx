@@ -68,7 +68,7 @@ export const Input = (props: InputPropType) => {
 											onChangeFile(event);
 										}}
 										onClick={(event) => {
-											event.target.value = null;
+											(event.target as HTMLInputElement).value = null;
 										}}
 										value={uploadedFileUrl}
 									/>
