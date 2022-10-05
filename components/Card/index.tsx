@@ -7,6 +7,10 @@ interface CardPropType {
 
 const DefaultClass = [
 	{
+		key: 'w-',
+		value: 'w-full',
+	},
+	{
 		key: 'max-w-',
 		value: 'max-w-[600px]',
 	},

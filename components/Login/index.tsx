@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FetchData } from '../../pages/api';
 import { authLogin, type RootState } from '../../redux';
 import { getUserInfo } from '../../utils/';
+import { Form, Input } from '../index';
 import Singing from './Singing';
 import SingUp from './SingUp';
 import Success from './Success';
@@ -21,6 +22,7 @@ const Login = () => {
 
 	// page state
 	const [isLogin, setIsLogin] = useState(true);
+	const [formtitle, setFormtitle] = useState('');
 
 	// login
 	const authUser = useSelector((state: RootState) => state.auth?.user);
@@ -51,11 +53,15 @@ const Login = () => {
 				}}
 			>
 				{!authUser && (
-					<div className="w-full max-w-[600px] m-auto p-4 bg-white drop-shadow-2xl rounded-md">
-						{isLogin && <Singing onSingUp={setIsLogin} />}
-						{!isLogin && <SingUp onSingUp={setIsLogin} />}
+					<Form title={`${formtitle}`}>
+						{isLogin && (
+							<Singing setFormTitle={setFormtitle} onSingUp={setIsLogin} />
+						)}
+						{!isLogin && (
+							<SingUp setFormTitle={setFormtitle} onSingUp={setIsLogin} />
+						)}
 
-						<div className="flex items-center w-[90%] mx-auto my-4">
+						<div className="flex items-center w-[90%] mx-auto my-2">
 							<div className="w-full border mr-2" />
 							or
 							<div className="w-full border ml-2" />
@@ -73,7 +79,7 @@ const Login = () => {
 								size="large"
 							/>
 						</div>
-					</div>
+					</Form>
 				)}
 
 				{authUser && <Success />}

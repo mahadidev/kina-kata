@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IoLogoHackernews } from 'react-icons/io';
 import { UploadImage } from '../../utils';
 import { Card, Icons } from '../index';
 

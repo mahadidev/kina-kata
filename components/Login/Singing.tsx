@@ -1,27 +1,28 @@
-import React from 'react';
-import { Button } from '../index';
+import React, { useEffect } from 'react';
+import { Button, Input } from '../index';
 
-const Singing = ({ onSingUp }: { onSingUp: any }) => {
+const Singing = ({
+	onSingUp,
+	setFormTitle,
+}: {
+	onSingUp: any;
+	setFormTitle: any;
+}) => {
+	useEffect(() => {
+		setFormTitle('Login');
+	}, [setFormTitle]);
+
 	return (
 		<>
-			<h1 className="text-xl text-semibold mb-2">Login</h1>
-			<form className="mb-2">
-				<input
-					className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="text"
-					name="email"
-					placeholder="email"
-				/>
-				<input
-					className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="password"
-					name="password"
-					placeholder="password"
-				/>
+			<div className="w-full mb-2">
+				<Input type="text" name="email" label="Email Address" />
+				<Input type="password" name="password" label="Password" />
 
-				<Button type="button">Login</Button>
-			</form>
-			<div className="flex mt-4">
+				<Button className="w-full mt-4" type="button">
+					Login
+				</Button>
+			</div>
+			<div className="flex mt-2">
 				<p>Don{`'`}t have an account? </p>
 				<span
 					className="text-primary cursor-pointer ml-1"

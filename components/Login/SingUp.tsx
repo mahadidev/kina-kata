@@ -1,11 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FetchData } from '../../pages/api';
 import { authLogin } from '../../redux';
 import { getImageUrl, UploadImage } from '../../utils';
-import { Button } from '../index';
+import { Button, Input } from '../index';
 
-const SingUp = ({ onSingUp }: { onSingUp: any }) => {
+const SingUp = ({
+	onSingUp,
+	setFormTitle,
+}: {
+	onSingUp: any;
+	setFormTitle: any;
+}) => {
 	// form ref
 	const imageRef = useRef(null);
 	const nameRef = useRef(null);
@@ -56,43 +62,22 @@ const SingUp = ({ onSingUp }: { onSingUp: any }) => {
 		});
 	};
 
+	useEffect(() => {
+		setFormTitle('Create a new account');
+	}, [setFormTitle]);
+
 	return (
 		<>
-			<h1 className="text-xl text-semibold mb-2">Create account</h1>
-			<form className="mb-2" onSubmit={handleSignUp}>
-				<input
-					className="w-full rounded mb-4 text-body-color text-base outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="file"
-					name="file"
-					placeholder="Full Name"
-					ref={imageRef}
-				/>
-				<input
-					className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="text"
-					name="name"
-					placeholder="Full Name"
-					required
-					ref={nameRef}
-				/>
-				<input
-					className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="text"
-					name="email"
-					placeholder="email"
-					required
-					ref={emailRef}
-				/>
-				<input
-					className="w-full rounded py-3 px-3 mb-4 text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none  focus:border-primary text-black-dark"
-					type="password"
-					name="password"
-					placeholder="password"
-					required
-					ref={passwordRef}
-				/>
-				<Button>Sing Up</Button>
-			</form>
+			<div className="w-full mb-2">
+				<Input type="file" name="image" label="Upload your profile picture" />
+				<Input type="text" name="name" label="Full Name" />
+				<Input type="email" name="email" label="Email Address" />
+				<Input type="password" name="password" label="Password" />
+
+				<Button className="w-full mt-4" type="button">
+					Login
+				</Button>
+			</div>
 			<div className="flex mt-4">
 				<p>Already a user? </p>
 				<span
