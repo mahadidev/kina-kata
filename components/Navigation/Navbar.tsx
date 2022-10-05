@@ -45,11 +45,7 @@ const Navbar = () => {
 					className="flex items-center sm:hidden"
 					style={{ height: `${navigationHeight}px` }}
 				>
-					<AuthButton
-						googleBtnProps={{
-							type: 'icon',
-						}}
-					/>
+					<AuthButton />
 				</div>
 				<Menu />
 
@@ -57,12 +53,7 @@ const Navbar = () => {
 					className={`w-full flex ml-3 sm:ml-0 mt-3 sm:mt-0 justify-start sm:justify-end`}
 				>
 					<CartButton />
-					<AuthButton
-						className="hidden sm:flex"
-						googleBtnProps={{
-							text: 'signin',
-						}}
-					/>
+					<AuthButton className="hidden sm:flex" />
 				</div>
 			</motion.div>
 		</div>
