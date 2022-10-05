@@ -1,9 +1,9 @@
-const { defaultConfig } = require('next/dist/server/config-shared');
-
 module.exports = {
 	content: [
+		'./node_modules/flowbite-react/**/*.js',
 		'./pages/**/*.{js,ts,jsx,tsx}',
 		'./components/**/*.{js,ts,jsx,tsx}',
+		'./public/**/*.html',
 	],
 	theme: {
 		extend: {
@@ -64,12 +64,30 @@ module.exports = {
 					DEFAULT: '#e57bc9',
 					light: '#e08fc8',
 				},
+				red: {
+					DEFAULT: '#ff0000',
+				},
 				transparent: {
-					gray: '#00000008',
+					gray: '#00000026',
 					DEFAULT: '#0000',
 				},
 			},
+			borderRadius: {
+				sm: '0.1rem',
+				DEFAULT: '0.5rem',
+				lg: '1rem',
+			},
+			borderWidth: {
+				sm: '0.5px',
+				DEFAULT: '1px',
+				lg: '3px',
+			},
+			boxShadow: {
+				DEFAULT: '0 2px 10px 0 rgb(6 6 6 / 6%)',
+				lg: '0 6px 24px 0 rgb(6 6 6 / 8%)',
+				xl: '7px 7px 34px 0 rgb(6 6 6 / 10%)',
+			},
 		},
 	},
-	plugins: [],
+	plugins: [require('flowbite/plugin')],
 };
