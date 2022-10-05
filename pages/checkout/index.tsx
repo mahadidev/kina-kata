@@ -15,7 +15,7 @@ const CheckOutPage = () => {
 				marginTop: navigationHeight + 'px',
 			}}
 		>
-			<Checkout />
+			<Checkout isVisible={true} />
 		</div>
 	);
 };
