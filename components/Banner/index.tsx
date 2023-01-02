@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import { FetchData } from '../../pages/api';
-import { PromoBanner, StandardBanner } from '../index';
-import Loader from './Loader';
+import { useEffect, useState } from "react";
+import { FetchData } from "../../pages/api";
+import { PromoBanner, StandardBanner } from "../index";
+import Loader from "./Loader";
 
 const Banner = ({ isVisible, name }: { isVisible: any; name: string }) => {
-	const [bannerData, setBannerData] = useState(null);
-	const getBannerData = (data: any) => {
-		setBannerData(data);
-	};
+  const [bannerData, setBannerData] = useState(null);
+  const getBannerData = (data: any) => {
+    setBannerData(data);
+  };
 
-	useEffect(() => {
-		if (isVisible) {
-			FetchData({
-				query: `*[_type == "banner"]{
+  useEffect(() => {
+    if (isVisible) {
+      FetchData({
+        query: `*[_type == "banner"]{
 					name,
 					image,
 					title,
@@ -23,29 +23,29 @@ const Banner = ({ isVisible, name }: { isVisible: any; name: string }) => {
 					btnLink,
 					bannerType
 				 }`,
-				callBack: getBannerData,
-			});
-		}
-	}, [isVisible]);
+        callBack: getBannerData,
+      });
+    }
+  }, [isVisible]);
 
-	const bannerOutput = bannerData?.map((item: any, i: number) => {
-		if (item.name === name) {
-			switch (item.bannerType) {
-				case 'standard':
-					return <StandardBanner key={i} {...item} />;
-				case 'promo':
-					return <PromoBanner key={i} {...item} />;
-			}
-		}
-	});
+  const bannerOutput = bannerData?.map((item: any, i: number) => {
+    if (item.name === name) {
+      switch (item.bannerType) {
+        case "standard":
+          return <StandardBanner key={i} {...item} />;
+        case "promo":
+          return <PromoBanner key={i} {...item} />;
+      }
+    }
+  });
 
-	return (
-		<>
-			{!bannerOutput && name === 'heroBanner' && <Loader type={'standard'} />}
-			{!bannerOutput && name === 'homePromoBanner' && <Loader type={'promo'} />}
-			{bannerOutput && bannerOutput}
-		</>
-	);
+  return (
+    <>
+      {!bannerOutput && name === "heroBanner" && <Loader type={"standard"} />}
+      {!bannerOutput && name === "homePromoBanner" && <Loader type={"promo"} />}
+      {bannerOutput && bannerOutput}
+    </>
+  );
 };
 
 export default Banner;

@@ -13,51 +13,11 @@ const HomePage = () => {
 
   return (
     <div style={{ marginTop: count + "px" }}>
-      <TrackVisibility>
-        {({ isVisible }) =>
-          isVisible ? (
-            <Banner isVisible={true} name={"heroBanner"} />
-          ) : (
-            <Banner isVisible={true} name={"heroBanner"} />
-          )
-        }
-      </TrackVisibility>
-      <TrackVisibility>
-        {({ isVisible }) =>
-          isVisible ? (
-            <PromoCard isVisible={true} name="homePromoBanner" />
-          ) : (
-            <PromoCard isVisible={true} name="homePromoBanner" />
-          )
-        }
-      </TrackVisibility>
-      <TrackVisibility>
-        {({ isVisible }) =>
-          isVisible ? (
-            <BestSellingProduct isVisible={true} />
-          ) : (
-            <BestSellingProduct isVisible={true} />
-          )
-        }
-      </TrackVisibility>
-      <TrackVisibility>
-        {({ isVisible }) =>
-          isVisible ? (
-            <Banner name={"homePromoBanner"} isVisible={true} />
-          ) : (
-            <Banner name={"homePromoBanner"} isVisible={true} />
-          )
-        }
-      </TrackVisibility>
-      <TrackVisibility>
-        {({ isVisible }) =>
-          isVisible ? (
-            <Products count={5} loaderCount={1} isVisible={true} />
-          ) : (
-            <Products count={5} loaderCount={1} isVisible={true} />
-          )
-        }
-      </TrackVisibility>
+      <Banner isVisible={true} name={"heroBanner"} />
+      <PromoCard isVisible={true} name="homePromoBanner" />
+      <BestSellingProduct isVisible={true} />
+      <Banner name={"homePromoBanner"} isVisible={true} />
+      <Products count={5} loaderCount={1} isVisible={true} />
     </div>
   );
 };
