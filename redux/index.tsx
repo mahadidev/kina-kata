@@ -1,9 +1,9 @@
-export { authLogin } from './AuthSlice';
+export { authLogin } from "./AuthSlice";
 export {
-	setBreadcrumbHeight,
-	setCartSidebar,
-	setFooterHeight,
-	setNavigationHeight,
-} from './BasicSlice';
-export { addCartItems, removeCartItem } from './CartSlice';
-export type { RootState } from './store';
+  setBreadcrumbHeight,
+  setCartSidebar,
+  setFooterHeight,
+  setNavigationHeight,
+} from "./BasicSlice";
+export { addCartItems, removeCartItem, clearCart } from "./CartSlice";
+export type { RootState } from "./store";
