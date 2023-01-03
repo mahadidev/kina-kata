@@ -63,15 +63,18 @@ export const AuthButton = ({
           type="primary"
           dropdown={
             <div className="w-40 absolute top-full left-0 bg-white drop-shadow-2xl rounded-md overflow-hidden mt-3">
-              <Link
-                href="/order"
-                className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
-                onClick={() => {
-                  onRoute();
-                }}
-              >
-                <span className="mr-2 flex items-center">{Icons.shopIcon}</span>
-                Order List
+              <Link href="/order">
+                <Button
+                  className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
+                  onClick={() => {
+                    onRoute();
+                  }}
+                >
+                  <span className="mr-2 flex items-center">
+                    {Icons.shopIcon}
+                  </span>
+                  Order List
+                </Button>
               </Link>
               <Button
                 className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
