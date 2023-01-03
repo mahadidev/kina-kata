@@ -36,7 +36,13 @@ export const CartButton = ({ className }: { className?: string }) => {
   );
 };
 
-export const AuthButton = ({ className }: { className?: string }) => {
+export const AuthButton = ({
+  className,
+  onRoute,
+}: {
+  className?: string;
+  onRoute?: CallableFunction;
+}) => {
   const dispatch = useDispatch();
 
   // login
@@ -46,6 +52,7 @@ export const AuthButton = ({ className }: { className?: string }) => {
   const logOut = () => {
     dispatch(authLogin(null));
     googleLogout();
+    onRoute();
   };
 
   return (
@@ -59,6 +66,9 @@ export const AuthButton = ({ className }: { className?: string }) => {
               <Link
                 href="/order"
                 className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
+                onClick={() => {
+                  onRoute();
+                }}
               >
                 <span className="mr-2 flex items-center">{Icons.shopIcon}</span>
                 Order List
@@ -87,6 +97,9 @@ export const AuthButton = ({ className }: { className?: string }) => {
         <Button
           className="bg-none border border-primary text-primary ml-3"
           href="/login"
+          onClick={() => {
+            onRoute();
+          }}
         >
           <span className="pr-2 flex items-center">{Icons.loginIcon}</span>Login
         </Button>
