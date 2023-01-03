@@ -41,6 +41,19 @@ const Navbar = () => {
         }}
         className="absolute sm:relative top-0 right-0 bg-white w-0 sm:w-full h-[100vh] sm:h-auto sm:bg-transparent sm:grid sm:grid-cols-2 sm:items-center sm:col-span-2 z-10 shadow-xl sm:shadow-none"
       >
+        <div
+          className="flex items-center sm:hidden"
+          style={{ height: `${navigationHeight}px` }}
+        >
+          <AuthButton
+            onRoute={() => {
+              setIsSidebar(false);
+              {
+                document.body.setAttribute("style", `overflow: auto`);
+              }
+            }}
+          />
+        </div>
         <Menu
           onRoute={() => {
             setIsSidebar(false);
@@ -55,6 +68,7 @@ const Navbar = () => {
         >
           <CartButton />
           <AuthButton
+            className="hidden sm:flex"
             onRoute={() => {
               setIsSidebar(false);
               {
