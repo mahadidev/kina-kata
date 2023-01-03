@@ -1,4 +1,5 @@
 import { googleLogout } from "@react-oauth/google";
+import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchData } from "../../pages/api";
 import { authLogin, RootState, setCartSidebar } from "../../redux";
@@ -55,10 +56,13 @@ export const AuthButton = ({ className }: { className?: string }) => {
           type="primary"
           dropdown={
             <div className="w-40 absolute top-full left-0 bg-white drop-shadow-2xl rounded-md overflow-hidden mt-3">
-              <Button className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start">
+              <Link
+                href="/order"
+                className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
+              >
                 <span className="mr-2 flex items-center">{Icons.shopIcon}</span>
                 Order List
-              </Button>
+              </Link>
               <Button
                 className="bg-none hover:bg-white-dark text-black-dark rounded-0 w-full justify-start"
                 onClick={logOut}
